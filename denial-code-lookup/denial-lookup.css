@@ -1,0 +1,11 @@
+
+.dcl-controls { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 200px) minmax(0, 160px); gap: 10px; margin: 0 0 12px; align-items: end; }
+.dcl-controls label { display: block; font-size: 13px; font-weight: 600; margin: 0 0 4px; }
+.dcl-controls input, .dcl-controls select {
+  width: 100%; border: 1px solid #94a3b8; border-radius: 7px; padding: 8px 10px; font: inherit; font-size: 15px; min-height: 42px; background: #fff;
+}
+#dcl-count { font-size: 13px; color: #4b5563; margin: 0 0 10px; }
+#dcl-wrap { overflow-x: auto; background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; }
+#dcl-table { margin: 0; }
+#dcl-table tbody tr[hidden] { display: none; }
+@media (max-width: 700px) { .dcl-controls { grid-template-columns: minmax(0, 1fr); } }

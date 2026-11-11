@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MUE Lookup</title>
+<meta name="description" content="MUE Lookup — standalone copy from Medical Billing 101.">
+<link rel="stylesheet" href="../assets/page.css">
+<link rel="stylesheet" href="tool.css">
+
+</head>
+<body>
+<div class="site-bar"><div class="wrap"><a href="../index.html">Medical billing calculators</a></div></div>
+<div class="wrap">
+<nav class="crumb" aria-label="Breadcrumb"><a href="../index.html">All tools</a> <span aria-hidden="true">›</span> MUE Lookup</nav>
+<h1>MUE Lookup</h1>
+<p class="mbx-tool-intro">This MUE lookup shows the Medicare limit on units for a CPT or HCPCS code. Enter the code and the units billed to see the practitioner MUE value, the MUE adjudication indicator, the rationale and whether the claim would pass, from the CMS Q4 2026 table.</p>
+<p class="mu-byline">By <a href="https://medicalbilling101.com/about/">Manikandan J, CPC, CRCR</a> &middot; Data: CMS practitioner MUE table (effective October 1, 2026) &middot; Updated November 11, 2026.</p>
+
+<div id="mbx-mue" data-cfg="{&quot;qtr&quot;:&quot;Q4 2026&quot;,&quot;eff&quot;:&quot;October 1, 2026&quot;,&quot;file&quot;:&quot;data/mue-pract-2026q4.txt&quot;,&quot;desc&quot;:&quot;data/code-descriptors.txt&quot;}">
+<div class="mu-grid">
+<form class="mu-card" novalidate>
+<div class="mu-fld"><label for="mu-code">CPT or HCPCS code</label><input type="text" id="mu-code" name="code" autocomplete="off" maxlength="7" placeholder="e.g. 96372" required></div>
+<div class="mu-fld"><label for="mu-units">Units billed</label><input type="text" id="mu-units" name="units" autocomplete="off" inputmode="numeric" maxlength="60" placeholder="e.g. 5 or 2, 1" required><p class="mu-hint">Same patient, same date of service. Enter one number per claim line, separated by commas.</p></div>
+<details class="mu-adv"><summary>Line covers a date span?</summary><div class="mu-fld"><label for="mu-days">Days in the date span</label><input type="text" id="mu-days" name="days" inputmode="numeric" maxlength="3" placeholder="1"><p class="mu-hint">For one line with a from and to date. Units are divided by the days and rounded.</p></div></details>
+<button type="submit" class="mu-btn">Check MUE</button>
+<div class="mu-ex-btns" aria-label="Examples"><button type="button" data-ex="96372:5">96372 x 5</button><button type="button" data-ex="20610:1,1">20610 x 1, 1</button><button type="button" data-ex="A0425:200,100">A0425 x 200, 100</button></div>
+<p class="mu-msg" id="mu-msg" role="status" aria-live="polite"></p>
+</form>
+<div class="mu-card" aria-live="polite"><div id="mu-out" hidden></div><p class="mu-empty" id="mu-empty">Enter a code and the units. You will see the practitioner MUE, the MAI, the MUE rationale and whether the units pass the edit.</p></div>
+</div>
+<p class="mu-src">Data: CMS Medicare NCCI MUE table, practitioner services, effective October 1, 2026 (15,212 codes). Rules: NCCI Policy Manual for Medicare Services, 2026, Chapter 1, Section V. CPT codes and descriptions only are copyright 2025 American Medical Association. All rights reserved. This tool is a guide, not coding advice.</p>
+<noscript><p>The MUE lookup needs JavaScript. It runs in your browser and nothing is sent or saved.</p></noscript>
+</div>
+
+<div class="mbx-keybox">
+<p><strong>Key takeaways</strong></p>
+<ul>
+<li>An MUE is the most units of a code Medicare expects for one patient on one day.</li>
+<li>MAI 1 checks each claim line. MAI 2 and MAI 3 add up all lines for the day.</li>
+<li>MAI 2 is an absolute limit. MAI 3 can pay on appeal with records.</li>
+<li>You cannot bill the patient for units denied by an MUE, even with an ABN.</li>
+</ul>
+</div>
+
+<h2>What is an MUE in medical billing?</h2>
+<p>An <strong>MUE</strong> is the maximum units of service for a HCPCS or CPT code that the same provider reports for the same patient on the same date of service, on the vast majority of correct claims. MUE stands for Medically Unlikely Edit. Medicare contractors use MUEs to deny units above that limit (<a href="https://www.cms.gov/files/document/01-chapter1-ncci-medicare-policy-manual-2026-final.pdf" target="_blank" rel="noopener">NCCI Policy Manual 2026, Ch. 1, &sect;V</a>).</p>
+<p>The MUE units checker looks up your code in the CMS practitioner table, compares your units with the limit, and shows the MUE value, adjudication indicator and rationale together.</p>
+
+<h2>What does the MUE adjudication indicator (MAI) mean?</h2>
+<p>The <strong>MUE Adjudication Indicator (MAI)</strong> is the CMS field that tells you how Medicare counts units against the MUE. MAI 1 is a claim line edit. MAI 2 and MAI 3 are date of service edits (<a href="https://www.cms.gov/files/document/01-chapter1-ncci-medicare-policy-manual-2026-final.pdf" target="_blank" rel="noopener">NCCI Policy Manual 2026, Ch. 1, &sect;V</a>).</p>
+<figure class="wp-block-table mu-ex"><table>
+<thead><tr><th>MAI</th><th>How units are counted</th><th>Can extra units be paid?</th><th>Codes in the Q4 2026 table</th></tr></thead>
+<tbody>
+<tr><td>1 &ndash; Line edit</td><td>Each claim line is compared with the MUE.</td><td>Yes, on separate lines with an appropriate modifier, such as XS.</td><td>41</td></tr>
+<tr><td>2 &ndash; Date of service: policy</td><td>All lines for the day are added up.</td><td>No. It is an absolute limit.</td><td>5,493</td></tr>
+<tr><td>3 &ndash; Date of service: clinical</td><td>All lines for the day are added up.</td><td>Yes, on reopening or appeal with records.</td><td>9,678</td></tr>
+</tbody></table></figure>
+<p>Most codes are date of service edits, and only 41 codes in the practitioner table use the claim line indicator, MAI 1.</p>
+
+<h2>How are units counted against an MUE?</h2>
+<p>Units are compared line by line for MAI 1 and summed for the whole day for MAI 2 or 3. If the units exceed the MUE, all units on that line or that day deny, not just the extra ones (<a href="https://www.cms.gov/files/document/01-chapter1-ncci-medicare-policy-manual-2026-final.pdf" target="_blank" rel="noopener">NCCI Policy Manual 2026, Ch. 1, &sect;V</a>).</p>
+<p>For example, 96372 has an MUE of 4 with MAI 3. Two lines of 3 and 2 units add up to 5, so all 5 units deny. A0425 has an MUE of 250 with MAI 1, so lines of 200 and 100 each pass on their own.</p>
+<p>Some MACs let you bill a repeated service over a date span on one line. The contractor divides the units by the days in the span and rounds to the nearest whole number. That number is compared with the MUE.</p>
+
+<h2>What does the MUE rationale mean?</h2>
+<p>The <strong>MUE rationale</strong> is the main reason CMS set the value. A code can have several reasons, but the table shows only one (<a href="https://www.cms.gov/files/document/01-chapter1-ncci-medicare-policy-manual-2026-final.pdf" target="_blank" rel="noopener">NCCI Policy Manual 2026, Ch. 1, &sect;V</a>). The most common rationales in the practitioner table are:</p>
+<figure class="wp-block-table mu-ex"><table>
+<thead><tr><th>Rationale</th><th>Codes</th><th>Example from the policy manual</th></tr></thead>
+<tbody><tr><td>CMS Policy</td><td>4,483</td><td>Can be 0 when a code is not covered or bundled.</td></tr><tr><td>Code Descriptor / CPT Instruction</td><td>2,889</td><td>1 for 94002, an initial day of ventilation management.</td></tr><tr><td>Clinical: Data</td><td>2,593</td><td>Based on all claims data from a 6-month period.</td></tr><tr><td>Anatomic Consideration</td><td>2,100</td><td>1 for an appendectomy, since there is only 1 appendix.</td></tr><tr><td>Nature of Service/Procedure</td><td>1,187</td><td>1 for an overnight sleep study, because of the time it takes.</td></tr><tr><td>Prescribing Information</td><td>690</td><td>Based on the maximum daily dose of a drug.</td></tr><tr><td>Nature of Analyte</td><td>564</td><td>1 for 82575, which needs a 24-hour urine collection.</td></tr></tbody></table></figure>
+<p>A data rationale, shown as Clinical: Data, means all submitted and paid claims from a 6-month period drove the value. On appeal, the reviewer checks the code, the units, that the units were done and that they were medically necessary.</p>
+
+<h2>What do MUE lookup examples look like?</h2>
+<p>These cases come from the Q4 2026 practitioner table. Each one is a test case we ran.</p>
+<figure class="wp-block-table mu-ex"><table>
+<thead><tr><th>Code and units</th><th>MUE</th><th>MAI</th><th>Result</th></tr></thead>
+<tbody>
+<tr><td>96372 x 5</td><td>4</td><td>3</td><td>Exceeds. All 5 units deny.</td></tr>
+<tr><td>20610 x 1, 1</td><td>2</td><td>3</td><td>Within. 2 units for the day.</td></tr>
+<tr><td>87798 x 14</td><td>13</td><td>3</td><td>Exceeds. All 14 units deny.</td></tr>
+<tr><td>11721 x 2</td><td>1</td><td>2</td><td>Exceeds. Absolute limit.</td></tr>
+<tr><td>A0425 x 200, 100</td><td>250</td><td>1</td><td>Within. Each line passes.</td></tr>
+<tr><td>J1100 x 360 over 3 days</td><td>120</td><td>3</td><td>Within. 360 &divide; 3 = 120.</td></tr>
+</tbody></table></figure>
+<p>A lab claim that hits the 87798 limit is a common case. Read <a href="https://medicalbilling101.com/cpt-87798-denied-for-13-units-why-it-happens-and-how-to-fix-it/">why CPT 87798 denies for 13 units</a>. For a rapid test unit denial, see <a href="https://medicalbilling101.com/humana-denying-87811-qw-87804-59-qw/">why Humana denied 87811-QW and 87804-59-QW</a>.</p>
+
+<h2>What happens when a claim exceeds the MUE?</h2>
+<p>The units deny as a coding denial, and you can appeal to the MAC. For MAI 1 or 3, the MAC can pay correctly coded, medically necessary units above the MUE. For MAI 2, an override would be contrary to CMS policy (<a href="https://www.cms.gov/medicare/coding-billing/national-correct-coding-initiative-ncci-edits/medicare-ncci-policy-manual" target="_blank" rel="noopener">NCCI Policy Manual 2026, Introduction and Ch. 1</a>).</p>
+<p>An ABN does not help. CMS says an ABN is not appropriate for an MUE denial, and the patient cannot be billed for the denied units. When a code denies often, the manual asks you to check 4 things: the code choice, how units are counted, medical necessity, and why your pattern differs from national data. Our <a href="https://medicalbilling101.com/denial-codes/co-151/">CO-151 denial code page</a> covers units of service denials. When I see a units denial, I check the date span on the line before anything else.</p>
+
+<h2>What data does the MUE checker use?</h2>
+<p>The checker uses the CMS Medicare NCCI MUE table for practitioner services, effective October 1, 2026. It holds 15,212 codes, and 2,639 of them have an MUE of 0 (<a href="https://www.cms.gov/medicare/coding-billing/national-correct-coding-initiative-ncci-edits/medicare-ncci-medically-unlikely-edits" target="_blank" rel="noopener">CMS MUE page</a>). We checked the 51 additions and 31 revisions in the CMS quarterly change files against the table, and all of them match.</p>
+<p>The outpatient hospital and DME supplier tables are separate, and confidential MUE values are never published, so neither is included. CMS posts the next table for January 1, 2027.</p>
+
+<h2>How do you use the MUE lookup tool?</h2>
+<ol>
+<li><strong>Enter the code</strong> billed for the patient.</li>
+<li><strong>Enter the units.</strong> Use commas for more than one claim line on the same day.</li>
+<li><strong>Add the date span</strong> only if one line covers several days.</li>
+<li><strong>Press Check MUE</strong> and read the result and the next step for the MAI.</li>
+</ol>
+<p>Check bundling next with the <a href="../ncci-edit-checker/">NCCI edit checker</a>. To price the units that pass, use the <a href="../rvu-calculator/">RVU calculator</a>. See all our <a href="https://medicalbilling101.com/tools/">free medical billing tools</a>.</p>
+
+<h2>How did we test this MUE units checker?</h2>
+<!-- ORIGINAL DATA: checker results compared with the raw CMS practitioner MUE CSV effective Oct 1, 2026, Nov 11, 2026 -->
+<p>We tested the checker with 65 checks against the raw CMS practitioner MUE file before we published it. Every test code returns the same MUE value, MAI and rationale as the CMS file. We also tested line edits, summed lines, date spans, an MUE of 0, a code with no MUE and bad input.</p>
+<p>Found a value that looks wrong? <a href="https://medicalbilling101.com/contact/">Contact us</a> with the code, and we will check it.</p>
+
+<h2>Frequently asked questions</h2>
+<h3>Is this MUE lookup free?</h3>
+<p>Yes. It is free and needs no sign-up. The code and units you enter stay in your browser.</p>
+<h3>Which MUE table does the lookup use?</h3>
+<p>It uses the CMS Medicare practitioner services MUE table effective October 1, 2026. The outpatient hospital and DME supplier tables are separate and are not included.</p>
+<h3>Can I bill more units than the MUE?</h3>
+<p>Sometimes. With MAI 1, a truly separate service can go on its own line with a modifier. With MAI 3, the MAC can pay extra units on appeal when records support them. With MAI 2, units above the MUE are not payable.</p>
+<h3>Can I bill the patient for units denied by an MUE?</h3>
+<p>No. An MUE denial is a coding denial. An ABN does not shift liability, and the provider cannot bill the patient for those units.</p>
+<h3>Why does a code show no MUE?</h3>
+<p>Not every code has an MUE, and CMS keeps some MUE values confidential. Check the code is valid and check payer policy before you bill extra units.</p>
+<h3>How often do MUE values change?</h3>
+<p>CMS updates the MUE tables every quarter, on the same schedule as the NCCI PTP edits. The next table is effective January 1, 2027, and we will load it then.</p>
+
+<h2>Sources</h2>
+<ul>
+<li><a href="https://www.cms.gov/medicare/coding-billing/national-correct-coding-initiative-ncci-edits/medicare-ncci-medically-unlikely-edits" target="_blank" rel="noopener">CMS, Medicare NCCI Medically Unlikely Edits (MUEs): Practitioner Services MUE Table, effective October 1, 2026.</a></li>
+<li><a href="https://www.cms.gov/files/document/01-chapter1-ncci-medicare-policy-manual-2026-final.pdf" target="_blank" rel="noopener">CMS, NCCI Policy Manual for Medicare Services, Chapter 1, Section V, Medically Unlikely Edits (revised January 1, 2026).</a></li>
+<li><a href="https://www.cms.gov/medicare/coding-billing/national-correct-coding-initiative-ncci-edits/medicare-ncci-policy-manual" target="_blank" rel="noopener">CMS, Medicare NCCI Policy Manual (2026) index, including the Introduction.</a></li>
+</ul>
+<p><em>This MUE lookup is an educational guide, not coding or legal advice. Payer policies and the medical record decide the final claim.</em></p>
+
+<p class="disclaimer">This tool is general reference information. It is not legal, billing or compliance advice. Rules and payer policies change. Check the current official source and your payer contract before you file, appeal or write off a claim.</p>
+<footer class="page-footer">
+<p>Live page: <a href="https://medicalbilling101.com/tools/mue-lookup/">https://medicalbilling101.com/tools/mue-lookup/</a></p>
+<p>By Manikandan J, CPC, CRCR · <a href="https://medicalbilling101.com/">Medical Billing 101</a></p>
+<p><a href="../index.html">Back to all tools</a></p>
+</footer>
+</div>
+<script src="mue.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>E/M Level Calculator</title>
+<meta name="description" content="E/M Level Calculator — standalone copy from Medical Billing 101.">
+<link rel="stylesheet" href="../assets/page.css">
+<link rel="stylesheet" href="tool.css">
+
+</head>
+<body>
+<div class="site-bar"><div class="wrap"><a href="../index.html">Medical billing calculators</a></div></div>
+<div class="wrap">
+<nav class="crumb" aria-label="Breadcrumb"><a href="../index.html">All tools</a> <span aria-hidden="true">›</span> E/M Level Calculator</nav>
+<h1>E/M Level Calculator</h1>
+<p class="mbx-tool-intro">This E/M level calculator picks the office visit code for 99202&ndash;99205 and 99211&ndash;99215. Choose the problems, data and risk to get the MDM level, or enter your total time. The tool shows the code each method supports, the add-on codes for long visits and the Medicare G2211 rule.</p>
+<p class="em-byline">By <a href="https://medicalbilling101.com/about/">Manikandan J, CPC, CRCR</a> &middot; Rules: AMA CPT E/M guidelines and CMS MLN006764 (May 2026) &middot; Updated November 11, 2026.</p>
+
+<div id="mbx-em">
+<div class="em-grid">
+<form class="em-card" novalidate>
+<fieldset><legend>Patient type</legend><div class="em-rad"><label><input type="radio" name="pt" value="n"> New patient</label><label><input type="radio" name="pt" value="e" checked> Established patient</label></div></fieldset>
+<fieldset class="em-set"><legend>Medical decision making</legend>
+<div class="em-fld"><label for="em-prob">Problems addressed</label><select id="em-prob" name="prob"><option value="">Choose a level </option>
+<option value="1">Minimal: 1 self-limited or minor problem. </option>
+<option value="2">Low: 2+ minor problems, 1 stable chronic illness, 1 acute uncomplicated illness or injury, or 1 stable acute illness. </option>
+<option value="3">Moderate: chronic illness with exacerbation, 2+ stable chronic illnesses, new problem with uncertain prognosis, acute illness with systemic symptoms, or acute complicated injury. </option>
+<option value="4">High: chronic illness with severe exacerbation, or a threat to life or bodily function. </option>
+</select></div>
+<p class="em-hint" style="margin:0 0 6px"><strong>Data reviewed and analyzed.</strong> Count each unique item once.</p>
+<div class="em-n3"><div><label for="em-notes">External notes reviewed (unique sources)</label><input type="number" id="em-notes" name="notes" min="0" max="20" value="0" inputmode="numeric"></div><div><label for="em-results">Unique test results reviewed</label><input type="number" id="em-results" name="results" min="0" max="20" value="0" inputmode="numeric"></div><div><label for="em-orders">Unique tests ordered</label><input type="number" id="em-orders" name="orders" min="0" max="20" value="0" inputmode="numeric"></div></div>
+<label class="em-ck" style="margin-top:8px!important"><input type="checkbox" name="hist"> Assessment needed an independent historian.</label>
+<label class="em-ck"><input type="checkbox" name="interp"> Independent interpretation of a test done by another physician (not billed separately).</label>
+<label class="em-ck"><input type="checkbox" name="disc"> Discussed management or a test with an external physician, QHP or appropriate source (not billed separately).</label>
+<div class="em-fld"><label for="em-risk">Risk of patient management</label><select id="em-risk" name="risk"><option value="">Choose a level </option>
+<option value="1">Minimal risk from more testing or treatment. </option>
+<option value="2">Low risk of morbidity from more testing or treatment. </option>
+<option value="3">Moderate: e.g. prescription drug management, minor surgery with risk factors, care limited by social determinants of health. </option>
+<option value="4">High: e.g. drug therapy needing intensive toxicity monitoring, decision on hospitalization or emergency major surgery. </option>
+</select></div>
+</fieldset>
+<div class="em-fld"><label for="em-time">Total time on the date of the visit (minutes, optional)</label><input type="number" id="em-time" name="time" min="0" max="600" inputmode="numeric" placeholder="e.g. 32"><p class="em-hint">Your own time that day, face-to-face and not, such as review, exam, counseling, orders and notes. Do not count clinical staff time or separately billed services.</p></div>
+<label class="em-ck"><input type="checkbox" name="c99211"> Clinical staff did this established visit; a physician or QHP was not needed (99211)</label>
+<button type="submit" class="em-btn">Find the E/M level</button>
+<button type="reset" class="em-btn" style="background:#fff;color:var(--td);border:1px solid var(--bd);margin-top:8px">Clear</button>
+<p class="em-msg" id="em-msg" role="status" aria-live="polite"></p>
+</form>
+<div class="em-card" aria-live="polite"><div id="em-out" hidden></div><p class="em-empty" id="em-empty">Choose the problems and risk levels, add the data you reviewed, and enter the total time if you track it. You will see the MDM level, the code by time and the suggested code.</p></div>
+</div>
+<p class="em-src">Rules: AMA CPT E/M guidelines (office or other outpatient services, 2021 and 2023 revisions; time thresholds since 2024) and CMS MLN006764 (May 2026). CPT codes and descriptions only are copyright 2025 American Medical Association. All rights reserved. This tool is a guide, not coding advice.</p>
+<noscript><p>The E/M level calculator needs JavaScript. It runs in your browser and nothing is sent or saved.</p></noscript>
+</div>
+
+<div class="mbx-keybox">
+<p><strong>Key takeaways</strong></p>
+<ul>
+<li>Office visits are coded by medical decision making (MDM) or by total time on the date of the visit.</li>
+<li>The MDM level is the highest level met by 2 of its 3 elements: problems, data and risk.</li>
+<li>Time thresholds must be met or exceeded: 99213 needs 20 minutes and 99214 needs 30.</li>
+<li>99211 has no MDM or time requirement.</li>
+</ul>
+</div>
+
+<h2>How do you determine the E/M level for an office visit?</h2>
+<p>You pick the level by MDM or by total time, whichever your note supports. Since 2021, history and exam no longer set the level for office visits 99202&ndash;99215. The visit still needs a medically appropriate history and exam (<a href="https://www.ama-assn.org/system/files/2019-06/cpt-office-prolonged-svs-code-changes.pdf" target="_blank" rel="noopener">AMA CPT 2021 office E/M guidelines</a>).</p>
+<p>The E/M calculator works both ways. It shows the code from MDM and the code from time. Then it suggests the higher one, because CPT lets you choose either method.</p>
+
+<h2>What are the E/M time thresholds for 2026?</h2>
+<p>Each office visit code has a minimum total time that must be met or exceeded. CPT replaced the old time ranges with these thresholds in 2024 (<a href="https://www.ama-assn.org/system/files/cpt-assistant-oct2024-prior-auth.pdf" target="_blank" rel="noopener">AMA CPT Assistant, October 2024</a>). <strong>Total time</strong> is the billing practitioner&rsquo;s own time on the date of the encounter, both face-to-face and not.</p>
+<figure class="wp-block-table em-ex"><table>
+<thead><tr><th>Level of MDM</th><th>New patient</th><th>Minutes</th><th>Established patient</th><th>Minutes</th></tr></thead>
+<tbody>
+<tr><td>N/A (clinical staff)</td><td>&mdash;</td><td>&mdash;</td><td>99211</td><td>N/A</td></tr>
+<tr><td>Straightforward</td><td>99202</td><td>15</td><td>99212</td><td>10</td></tr>
+<tr><td>Low</td><td>99203</td><td>30</td><td>99213</td><td>20</td></tr>
+<tr><td>Moderate</td><td>99204</td><td>45</td><td>99214</td><td>30</td></tr>
+<tr><td>High</td><td>99205</td><td>60</td><td>99215</td><td>40</td></tr>
+</tbody></table></figure>
+<p>Count time for preparing to see the patient, the exam, counseling, ordering, referring, documenting and care coordination. Do not count travel, clinical staff time or services you bill separately (<a href="https://www.ama-assn.org/system/files/2019-06/cpt-office-prolonged-svs-code-changes.pdf" target="_blank" rel="noopener">AMA, Guidelines Common to All E/M Services: Time</a>). Medicare also says the CPT midpoint rule does not apply here, so you must reach the full time (<a href="https://www.cms.gov/files/document/mln006764-evaluation-management-services.pdf" target="_blank" rel="noopener">CMS MLN006764, May 2026</a>).</p>
+
+<h2>How is the MDM level calculated?</h2>
+<p>The MDM level is the highest level where 2 of the 3 elements are met or exceeded. <strong>Medical decision making (MDM)</strong> is the work of establishing diagnoses, assessing the status of a condition and selecting a management option. Its 3 elements are the problems addressed, the data reviewed and analyzed, and the risk of patient management (<a href="https://www.ama-assn.org/system/files/2023-e-m-descriptors-guidelines.pdf" target="_blank" rel="noopener">AMA CPT E/M guidelines, Table 1: Levels of MDM</a>).</p>
+<figure class="wp-block-table em-ex"><table>
+<thead><tr><th>MDM level</th><th>Problems addressed</th><th>Data</th><th>Risk</th></tr></thead>
+<tbody>
+<tr><td>Straightforward</td><td>1 self-limited or minor problem</td><td>Minimal or none</td><td>Minimal</td></tr>
+<tr><td>Low</td><td>2+ self-limited or minor problems; 1 stable chronic illness; 1 acute, uncomplicated illness or injury; or 1 stable, acute illness</td><td>Limited</td><td>Low</td></tr>
+<tr><td>Moderate</td><td>1+ chronic illnesses with exacerbation, progression or side effects; 2+ stable chronic illnesses; 1 undiagnosed new problem with uncertain prognosis; 1 acute illness with systemic symptoms; or 1 acute, complicated injury</td><td>Moderate</td><td>Moderate, e.g. prescription drug management</td></tr>
+<tr><td>High</td><td>1+ chronic illnesses with severe exacerbation, progression or side effects; or 1 illness or injury that poses a threat to life or bodily function</td><td>Extensive</td><td>High, e.g. decision regarding hospitalization</td></tr>
+</tbody></table></figure>
+<p>Here is a quick way to read it. Line up the 3 element levels from low to high. The middle one is your MDM level. For example, moderate problems, limited data and moderate risk give moderate MDM, which is 99214 for an established patient.</p>
+
+<h2>How do you count data for MDM?</h2>
+<p>Data has 3 categories. Category 1 counts each unique external note, test result and test order. Category 2 is an independent interpretation of a test. Category 3 is a discussion of management with an external physician or appropriate source (<a href="https://www.ama-assn.org/system/files/2023-e-m-descriptors-guidelines.pdf" target="_blank" rel="noopener">AMA CPT E/M guidelines, Table 1: Levels of MDM</a>).</p>
+<ul>
+<li><strong>Limited:</strong> any 2 notes, results or orders, or an assessment that needs an independent historian.</li>
+<li><strong>Moderate:</strong> 1 of 3 categories. Category 1 here needs any 3 items, and the independent historian counts as one.</li>
+<li><strong>Extensive:</strong> 2 of 3 categories.</li>
+</ul>
+<p>Do not count a test you bill separately with its own interpretation code. A test you order and then review counts once, because the review is part of the order (<a href="https://www.ama-assn.org/system/files/2019-06/cpt-office-prolonged-svs-code-changes.pdf" target="_blank" rel="noopener">AMA CPT 2021 office E/M guidelines</a>).</p>
+
+<h2>When do you use 99211?</h2>
+<p><strong>99211</strong> is the code for an established patient visit that may not need a physician or other qualified health care professional. Use it when clinical staff do the face-to-face service and the problem is usually minimal. CPT says the level of MDM does not apply to 99211, and time cannot be used to select it either (<a href="https://www.ama-assn.org/system/files/2023-e-m-descriptors-guidelines.pdf" target="_blank" rel="noopener">AMA CPT E/M guidelines, Table 1: Levels of MDM</a>). A blood pressure check by a nurse is a common example.</p>
+
+<h2>When do you add 99417 or G2212 for a long visit?</h2>
+<p>Add a prolonged service code only when you pick the level by time and you pass the top code&rsquo;s time by 15 minutes or more. CPT uses 99417 with 99205 or 99215. Medicare uses G2212 instead, and its count starts later (<a href="https://www.cms.gov/files/document/mln006764-evaluation-management-services.pdf" target="_blank" rel="noopener">CMS MLN006764, Table 3</a>).</p>
+<figure class="wp-block-table em-ex"><table>
+<thead><tr><th>Total time</th><th>CPT (most payers)</th><th>Medicare</th></tr></thead>
+<tbody>
+<tr><td>New patient, 75&ndash;88 min</td><td>99205 + 99417 &times; 1</td><td>99205 only</td></tr>
+<tr><td>New patient, 89&ndash;103 min</td><td>99205 + 99417 &times; 1 or 2 (90+ min)</td><td>99205 + G2212 &times; 1</td></tr>
+<tr><td>Established, 55&ndash;68 min</td><td>99215 + 99417 &times; 1</td><td>99215 only</td></tr>
+<tr><td>Established, 69&ndash;83 min</td><td>99215 + 99417 &times; 1 or 2 (70+ min)</td><td>99215 + G2212 &times; 1</td></tr>
+</tbody></table></figure>
+<p>Each 99417 unit needs a full 15 minutes past the 99205 or 99215 time (<a href="https://www.ama-assn.org/system/files/2019-06/cpt-office-prolonged-svs-code-changes.pdf" target="_blank" rel="noopener">AMA, prolonged services 99417</a>). Do not report G2212 for less than 15 extra minutes past Medicare&rsquo;s count.</p>
+
+<h2>Can you bill G2211 with an office visit?</h2>
+<p>Yes, for Medicare. <strong>G2211</strong> is an add-on for the complexity of an ongoing relationship. You can report it with 99202&ndash;99205 and 99211&ndash;99215 when you are the continuing focal point for the patient&rsquo;s care, or you give ongoing care for a single serious or complex condition (<a href="https://www.cms.gov/files/document/mln006764-evaluation-management-services.pdf" target="_blank" rel="noopener">CMS MLN006764, May 2026</a>).</p>
+<p>Medicare does not pay G2211 when the visit carries modifier 25. The exceptions are a visit on the same day as an annual wellness visit, vaccine administration or another Part B preventive service. Commercial payers set their own rules. To check if a visit needs modifier 25 at all, use the <a href="../modifier-25-59-helper/">modifier 25 vs 59 helper</a>.</p>
+
+<h2>What do E/M level examples look like?</h2>
+<p>These 4 cases show how the calculator applies the rules. Each one is a test case we ran.</p>
+<figure class="wp-block-table em-ex"><table>
+<thead><tr><th>Visit</th><th>MDM elements</th><th>Time</th><th>Result</th></tr></thead>
+<tbody>
+<tr><td>Established, 2 stable chronic illnesses, 1 lab ordered, 1 prior result reviewed, prescription drug management</td><td>Moderate problems, limited data, moderate risk = moderate</td><td>25 min (99213)</td><td>99214 by MDM</td></tr>
+<tr><td>Established, 1 acute uncomplicated illness, 1 test ordered, low risk</td><td>Low problems, minimal data, low risk = low</td><td>&mdash;</td><td>99213</td></tr>
+<tr><td>New patient, 1 minor problem, nothing reviewed</td><td>Minimal, minimal, minimal = straightforward</td><td>48 min (99204)</td><td>99204 by time</td></tr>
+<tr><td>Established, long visit</td><td>High problems, moderate data, moderate risk = moderate</td><td>72 min (99215)</td><td>99215 + 99417 &times; 2; Medicare G2212 &times; 1</td></tr>
+</tbody></table></figure>
+<p>Want to see what a code pays? Use the <a href="../rvu-calculator/">RVU Calculator</a> with 99213 or 99214. If an E/M visit was denied on the same day as a procedure, read <a href="https://medicalbilling101.com/aetna-denying-office-visit-99213-billed-with-x-ray/">why Aetna denied 99213 billed with an X-ray</a>.</p>
+
+<h2>How do you use the E/M calculator?</h2>
+<ol>
+<li><strong>Pick the patient type.</strong> New means no professional service from your group&rsquo;s same specialty in the past 3 years.</li>
+<li><strong>Choose the problems and risk levels.</strong> The lists show the AMA wording for each level.</li>
+<li><strong>Enter the data.</strong> Count unique notes, results and orders, then tick the other data boxes that apply.</li>
+<li><strong>Add total time</strong> if you track it, and press the button.</li>
+</ol>
+<p>For visits inside a surgical global period, check the <a href="../global-period-calculator/">Global Period Calculator</a> first. For a denied visit, use the <a href="../denial-code-lookup/">denial code lookup</a> and the <a href="../appeal-letter-generator/">Appeal Letter Generator</a>. See all our <a href="https://medicalbilling101.com/tools/">free medical billing tools</a>.</p>
+
+<h2>How did we test this E/M level calculator?</h2>
+<!-- ORIGINAL DATA: calculator test results against AMA and CMS rules, Nov 11, 2026 -->
+<p>We tested the calculator with 77 checks against the AMA tables and the CMS booklet before we published it. The checks cover every MDM level for both patient types, each data category, all 8 time thresholds and their edges, such as 29 versus 30 minutes for 99214. They also check the 99417 and G2212 counts in CMS Table 3, such as 99 minutes giving G2212 &times; 3 with 99215.</p>
+<p>Found a result that looks wrong? <a href="https://medicalbilling101.com/contact/">Contact us</a> with the inputs, and we will check it.</p>
+
+<h2>Frequently asked questions</h2>
+<h3>Is this E/M level calculator free?</h3>
+<p>Yes. It is free and needs no sign-up. Everything runs in your browser. Nothing you enter is sent or saved.</p>
+<h3>Can I pick the E/M level by time or by MDM?</h3>
+<p>Yes. For office and outpatient visits 99202 to 99205 and 99212 to 99215, CPT lets you select the level by medical decision making or by total time on the date of the encounter. Use the one your documentation supports best.</p>
+<h3>How many minutes is a 99214?</h3>
+<p>When you use time, 99214 needs at least 30 minutes of total practitioner time on the date of the visit. 99213 needs 20 minutes and 99215 needs 40 minutes.</p>
+<h3>Does history and exam still count for the E/M level?</h3>
+<p>No. The visit needs a medically appropriate history and exam, but their extent does not set the level. The level comes from MDM or time.</p>
+<h3>Can 99211 be billed by time?</h3>
+<p>No. CPT says time and MDM do not apply to 99211. It is for an established patient visit that may not need a physician or other qualified health care professional.</p>
+<h3>Do commercial payers follow the same rules?</h3>
+<p>Most payers use the CPT E/M guidelines, but add-on codes differ. Medicare uses G2212 for prolonged office time and G2211 for visit complexity. Many commercial payers use CPT 99417 for prolonged time. Check the payer policy.</p>
+
+<h2>Sources</h2>
+<ul>
+<li><a href="https://www.ama-assn.org/system/files/2019-06/cpt-office-prolonged-svs-code-changes.pdf" target="_blank" rel="noopener">AMA, CPT Evaluation and Management (E/M) Office or Other Outpatient (99202-99215) and Prolonged Services Code and Guideline Changes (effective January 1, 2021).</a></li>
+<li><a href="https://www.ama-assn.org/system/files/2023-e-m-descriptors-guidelines.pdf" target="_blank" rel="noopener">AMA, CPT E/M Code and Guideline Changes effective January 1, 2023 (Table 1: Levels of Medical Decision Making).</a></li>
+<li><a href="https://www.ama-assn.org/system/files/cpt-assistant-oct2024-prior-auth.pdf" target="_blank" rel="noopener">AMA, CPT Assistant October 2024 special edition: office visit time thresholds (must be met or exceeded).</a></li>
+<li><a href="https://www.cms.gov/files/document/mln006764-evaluation-management-services.pdf" target="_blank" rel="noopener">CMS MLN, Evaluation and Management Services booklet, MLN006764 (May 2026): G2211, G2212 Table 3, time rules.</a></li>
+<li><a href="https://www.ama-assn.org/practice-management/cpt/cpt-evaluation-and-management" target="_blank" rel="noopener">AMA, CPT Evaluation and Management overview (updated January 26, 2026).</a></li>
+</ul>
+<p><em>This calculator is an educational guide, not coding or legal advice. The final code must match the medical record and the payer&rsquo;s policy.</em></p>
+
+<p class="disclaimer">This tool is general reference information. It is not legal, billing or compliance advice. Rules and payer policies change. Check the current official source and your payer contract before you file, appeal or write off a claim.</p>
+<footer class="page-footer">
+<p>Live page: <a href="https://medicalbilling101.com/tools/em-level-calculator/">https://medicalbilling101.com/tools/em-level-calculator/</a></p>
+<p>By Manikandan J, CPC, CRCR · <a href="https://medicalbilling101.com/">Medical Billing 101</a></p>
+<p><a href="../index.html">Back to all tools</a></p>
+</footer>
+</div>
+<script src="em.js" defer></script>
+</body>
+</html>

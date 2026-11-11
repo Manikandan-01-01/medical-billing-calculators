@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NCCI Edit Checker</title>
+<meta name="description" content="NCCI Edit Checker — standalone copy from Medical Billing 101.">
+<link rel="stylesheet" href="../assets/page.css">
+<link rel="stylesheet" href="tool.css">
+
+</head>
+<body>
+<div class="site-bar"><div class="wrap"><a href="../index.html">Medical billing calculators</a></div></div>
+<div class="wrap">
+<nav class="crumb" aria-label="Breadcrumb"><a href="../index.html">All tools</a> <span aria-hidden="true">›</span> NCCI Edit Checker</nav>
+<h1>NCCI Edit Checker</h1>
+<p class="mbx-tool-intro">This NCCI edit checker tells you if two CPT or HCPCS codes can be billed together for the same patient on the same day. Enter both codes to see the Medicare PTP edit, which code is column 1, the modifier indicator and the edit rationale, straight from the CMS Q4 2026 practitioner file.</p>
+<p class="pt-byline">By <a href="https://medicalbilling101.com/about/">Manikandan J, CPC, CRCR</a> &middot; Data: CMS NCCI PTP edits v323r0 (effective October 1, 2026) &middot; Updated November 11, 2026.</p>
+
+<div id="mbx-ptp" data-cfg="{&quot;ver&quot;:&quot;v323r0&quot;,&quot;qtr&quot;:&quot;Q4 2026&quot;,&quot;eff&quot;:&quot;October 1, 2026&quot;,&quot;starts&quot;:[&quot;0001U&quot;,&quot;00844&quot;,&quot;0175T&quot;,&quot;0424U&quot;,&quot;0748T&quot;,&quot;12020&quot;,&quot;17282&quot;,&quot;21086&quot;,&quot;22226&quot;,&quot;23680&quot;,&quot;25263&quot;,&quot;26426&quot;,&quot;27134&quot;,&quot;27520&quot;,&quot;28072&quot;,&quot;29086&quot;,&quot;31235&quot;,&quot;32550&quot;,&quot;33411&quot;,&quot;33958&quot;,&quot;35570&quot;,&quot;37212&quot;,&quot;41599&quot;,&quot;43260&quot;,&quot;44310&quot;,&quot;46255&quot;,&quot;49189&quot;,&quot;50727&quot;,&quot;53240&quot;,&quot;55866&quot;,&quot;58555&quot;,&quot;61517&quot;,&quot;62322&quot;,&quot;64590&quot;,&quot;65875&quot;,&quot;68371&quot;,&quot;77423&quot;,&quot;81372&quot;,&quot;92941&quot;,&quot;97607&quot;],&quot;files&quot;:[&quot;data/mbx-ncci-ptp-pract-v323r0-00.txt&quot;,&quot;data/mbx-ncci-ptp-pract-v323r0-01.txt&quot;,&quot;data/mbx-ncci-ptp-pract-v323r0-02.txt&quot;,&quot;data/mbx-ncci-ptp-pract-v323r0-03.txt&quot;,&quot;data/mbx-ncci-ptp-pract-v323r0-04.txt&quot;,&quot;data/mbx-ncci-ptp-pract-v323r0-05.txt&quot;,&quot;data/mbx-ncci-ptp-pract-v323r0-06.txt&quot;,&quot;data/mbx-ncci-ptp-pract-v323r0-07.txt&quot;,&quot;data/mbx-ncci-ptp-pract-v323r0-08.txt&quot;,&quot;data/mbx-ncci-ptp-pract-v323r0-09.txt&quot;,&quot;data/mbx-ncci-ptp-pract-v323r0-10.txt&quot;,&quot;data/mbx-ncci-ptp-pract-v323r0-11.txt&quot;,&quot;data/mbx-ncci-ptp-pract-v323r0-12.txt&quot;,&quot;data/mbx-ncci-ptp-pract-v323r0-13.txt&quot;,&quot;data/mbx-ncci-ptp-pract-v323r0-14.txt&quot;,&quot;data/mbx-ncci-ptp-pract-v323r0-15.txt&quot;,&quot;data/mbx-ncci-ptp-pract-v323r0-16.txt&quot;,&quot;data/mbx-ncci-ptp-pract-v323r0-17.txt&quot;,&quot;data/mbx-ncci-ptp-pract-v323r0-18.txt&quot;,&quot;data/mbx-ncci-ptp-pract-v323r0-19.txt&quot;,&quot;data/mbx-ncci-ptp-pract-v323r0-20.txt&quot;,&quot;data/mbx-ncci-ptp-pract-v323r0-21.txt&quot;,&quot;data/mbx-ncci-ptp-pract-v323r0-22.txt&quot;,&quot;data/mbx-ncci-ptp-pract-v323r0-23.txt&quot;,&quot;data/mbx-ncci-ptp-pract-v323r0-24.txt&quot;,&quot;data/mbx-ncci-ptp-pract-v323r0-25.txt&quot;,&quot;data/mbx-ncci-ptp-pract-v323r0-26.txt&quot;,&quot;data/mbx-ncci-ptp-pract-v323r0-27.txt&quot;,&quot;data/mbx-ncci-ptp-pract-v323r0-28.txt&quot;,&quot;data/mbx-ncci-ptp-pract-v323r0-29.txt&quot;,&quot;data/mbx-ncci-ptp-pract-v323r0-30.txt&quot;,&quot;data/mbx-ncci-ptp-pract-v323r0-31.txt&quot;,&quot;data/mbx-ncci-ptp-pract-v323r0-32.txt&quot;,&quot;data/mbx-ncci-ptp-pract-v323r0-33.txt&quot;,&quot;data/mbx-ncci-ptp-pract-v323r0-34.txt&quot;,&quot;data/mbx-ncci-ptp-pract-v323r0-35.txt&quot;,&quot;data/mbx-ncci-ptp-pract-v323r0-36.txt&quot;,&quot;data/mbx-ncci-ptp-pract-v323r0-37.txt&quot;,&quot;data/mbx-ncci-ptp-pract-v323r0-38.txt&quot;,&quot;data/mbx-ncci-ptp-pract-v323r0-39.txt&quot;],&quot;desc&quot;:&quot;data/code-descriptors.txt&quot;}">
+<div class="pt-grid">
+<form class="pt-card" novalidate>
+<div class="pt-two"><div class="pt-fld"><label for="pt-a">First code</label><input type="text" id="pt-a" name="a" autocomplete="off" maxlength="7" placeholder="e.g. 20610" required></div><div class="pt-fld"><label for="pt-b">Second code</label><input type="text" id="pt-b" name="b" autocomplete="off" maxlength="7" placeholder="e.g. 76942" required></div></div>
+<p class="pt-hint" style="margin:-4px 0 12px">CPT or HCPCS, same patient and same date of service. Order does not matter.</p>
+<button type="submit" class="pt-btn">Check NCCI edit</button>
+<div class="pt-ex-btns" aria-label="Examples"><button type="button" data-ex="20610+76942">20610 + 76942</button><button type="button" data-ex="11042+64400">11042 + 64400</button><button type="button" data-ex="99213+20610">99213 + 20610</button></div>
+<p class="pt-msg" id="pt-msg" role="status" aria-live="polite"></p>
+</form>
+<div class="pt-card" aria-live="polite"><div id="pt-out" hidden></div><p class="pt-empty" id="pt-empty">Enter two codes. You will see whether an NCCI PTP edit applies, which code Medicare pays, the modifier indicator, the edit rationale and the modifiers that can bypass it.</p></div>
+</div>
+<p class="pt-src">Data: CMS Medicare NCCI PTP edits, practitioner services, v323r0, effective October 1, 2026 (1,732,820 active edits). Rules: NCCI Policy Manual for Medicare Services, 2026, Chapter 1. CPT codes and descriptions only are copyright 2025 American Medical Association. All rights reserved. This tool is a guide, not coding advice.</p>
+<noscript><p>The NCCI edit checker needs JavaScript. It runs in your browser and nothing is sent or saved.</p></noscript>
+</div>
+
+<div class="mbx-keybox">
+<p><strong>Key takeaways</strong></p>
+<ul>
+<li>An NCCI PTP edit pays the column 1 code and denies the column 2 code.</li>
+<li>Modifier indicator 0 means no modifier can bypass the edit.</li>
+<li>Modifier indicator 1 means an NCCI PTP-associated modifier can bypass it, only for a separate encounter, site or specimen.</li>
+<li>CMS updates the edits every quarter. This tool uses the Q4 2026 file.</li>
+</ul>
+</div>
+
+<h2>What is an NCCI PTP edit?</h2>
+<p>An <strong>NCCI PTP edit</strong> is a CMS code pair that should not be reported together for the same patient on the same date of service. The <strong>column 1 code</strong> is the code Medicare pays, and the <strong>column 2 code</strong> is the one it denies. The denial stands unless a clinically appropriate NCCI PTP-associated modifier is reported (<a href="https://www.cms.gov/medicare/coding-billing/national-correct-coding-initiative-ncci-edits/medicare-ncci-procedure-procedure-ptp-edits" target="_blank" rel="noopener">CMS NCCI PTP edits page</a>).</p>
+<p>PTP stands for procedure-to-procedure. The NCCI bundling checker searches every active edit in the CMS practitioner file for your 2 codes, in both directions.</p>
+
+<h2>What do NCCI modifier indicators 0, 1 and 9 mean?</h2>
+<p>The modifier indicator tells you if a modifier can bypass the edit. The <strong>Correct Coding Modifier Indicator (CCMI)</strong> is the CMS name for this field (<a href="https://www.cms.gov/files/document/01-chapter1-ncci-medicare-policy-manual-2026-final.pdf" target="_blank" rel="noopener">NCCI Policy Manual 2026, Ch. 1, &sect;E</a>).</p>
+<figure class="wp-block-table pt-ex"><table>
+<thead><tr><th>Indicator</th><th>Meaning</th><th>Active edits in v323r0</th></tr></thead>
+<tbody>
+<tr><td>0</td><td>NCCI PTP-associated modifiers cannot bypass the edit.</td><td>513,295</td></tr>
+<tr><td>1</td><td>A modifier may bypass the edit under appropriate circumstances.</td><td>1,219,525</td></tr>
+<tr><td>9</td><td>Not specified. Used when the deletion date equals the effective date, so the edit never applied.</td><td>0</td></tr>
+</tbody></table></figure>
+<p>Indicator 9 appears only on deleted edits. The checker shows active edits only, so you will see 0 or 1.</p>
+
+<h2>Which modifiers can bypass an NCCI edit?</h2>
+<p>Only NCCI PTP-associated modifiers can bypass an edit with indicator 1. The 2026 policy manual lists them in 3 groups (<a href="https://www.cms.gov/files/document/01-chapter1-ncci-medicare-policy-manual-2026-final.pdf" target="_blank" rel="noopener">NCCI Policy Manual 2026, Ch. 1, &sect;E</a>):</p>
+<ul>
+<li><strong>Anatomic:</strong> E1&ndash;E4, FA, F1&ndash;F9, TA, T1&ndash;T9, LT, RT, LC, LD, RC, LM, RI.</li>
+<li><strong>Global surgery:</strong> 24, 25, 57, 58, 78, 79.</li>
+<li><strong>Other:</strong> 27, 59, 91, XE, XS, XP, XU.</li>
+</ul>
+<p>Modifiers 22, 76 and 77 are not on the list, so they do not bypass a PTP edit. A modifier is allowed only when the clinical facts justify it, never just to get past the edit.</p>
+
+<h2>When is modifier 59 or XS correct for an NCCI edit?</h2>
+<p>Use 59 or an X modifier only when the 2 services were at different anatomic sites or different patient encounters. Different procedures alone do not qualify, and different diagnoses are not enough either (<a href="https://www.cms.gov/files/document/01-chapter1-ncci-medicare-policy-manual-2026-final.pdf" target="_blank" rel="noopener">NCCI Policy Manual 2026, Ch. 1, &sect;E</a>). Use XE, XS, XP or XU instead of 59 when one of them describes the case. The <a href="../modifier-25-59-helper/">modifier 25 vs 59 helper</a> walks you through the choice.</p>
+<p>For example, the manual says 38221 and 38220 can be billed with modifier 59 when the biopsy and aspiration are on opposite iliac bones. On the same iliac bone at the same encounter, use 38222 instead. When a modifier 59 claim still denies, I check the anatomic site in the note first. Our <a href="https://medicalbilling101.com/blue-cross-denying-asc-nerve-block-codes-bundled-modifier-59/">modifier 59 nerve block denial answer</a> walks through a real case.</p>
+
+<h2>What do NCCI edit check examples look like?</h2>
+<p>These pairs come from the v323r0 practitioner file. Each one is a test case we ran.</p>
+<figure class="wp-block-table pt-ex"><table>
+<thead><tr><th>Codes entered</th><th>Column 1</th><th>Column 2</th><th>Indicator</th><th>Rationale</th></tr></thead>
+<tbody>
+<tr><td>20610 + 76942</td><td>20610</td><td>76942</td><td>1</td><td>CPT Manual or CMS manual coding instruction</td></tr>
+<tr><td>11042 + 64400</td><td>11042</td><td>64400</td><td>0</td><td>Anesthesia service included in surgical procedure</td></tr>
+<tr><td>99213 + 20610</td><td>20610</td><td>99213</td><td>1</td><td>CPT Manual or CMS manual coding instruction</td></tr>
+<tr><td>38220 + 38221</td><td>38221</td><td>38220</td><td>1</td><td>CPT Manual or CMS manual coding instruction</td></tr>
+<tr><td>G0471 + 36415</td><td>G0471</td><td>36415</td><td>0</td><td>Mutually exclusive procedures</td></tr>
+</tbody></table></figure>
+<p>The 99213 + 20610 row is why an E/M visit on the day of a joint injection needs <a href="../em-level-calculator/">a separately identifiable E/M level</a> and modifier 25. For a payer that bundled a visit with an X-ray, read <a href="https://medicalbilling101.com/aetna-denying-office-visit-99213-billed-with-x-ray/">why Aetna denied 99213 billed with an X-ray</a>.</p>
+
+<h2>What data does the NCCI edit checker use?</h2>
+<p>The checker uses the CMS Medicare NCCI PTP edits for practitioner services, version v323r0, effective October 1, 2026. The 4 CMS files hold 2,637,645 records. We kept the 1,732,820 edits that are active today, across 10,881 column 1 codes, and dropped deleted edits (<a href="https://www.cms.gov/medicare/coding-billing/national-correct-coding-initiative-ncci-edits/medicare-ncci-procedure-procedure-ptp-edits" target="_blank" rel="noopener">CMS NCCI PTP edits page</a>).</p>
+<p>The data loads in small parts, so a check downloads only the slices for your 2 codes. Hospital outpatient edits and Medicaid NCCI edits are separate files and are not included. CMS posts the next quarterly file for January 1, 2027.</p>
+
+<h2>How do you use the NCCI bundling checker?</h2>
+<ol>
+<li><strong>Enter the 2 codes</strong> billed for the same patient on the same date of service.</li>
+<li><strong>Press Check NCCI edit.</strong> The tool looks in both directions.</li>
+<li><strong>Read the result.</strong> Indicator 0 means bill only the column 1 code. Indicator 1 means a modifier may apply if the record supports it.</li>
+<li><strong>Check units next</strong> with the <a href="../mue-lookup/">MUE lookup</a> for each code.</li>
+</ol>
+<p>To search the CMS tables by hand, follow our <a href="https://medicalbilling101.com/step-by-step-guide-to-searching-ncci-ptp-tables-on-cms-gov/">guide to searching NCCI PTP tables</a>. A bundled line often denies as <a href="https://medicalbilling101.com/co-97-denial-code/">CO-97</a>.</p>
+
+<h2>How did we test this NCCI edit checker?</h2>
+<!-- ORIGINAL DATA: checker results compared with the raw CMS v323r0 files, Nov 11, 2026 -->
+<p>We tested the checker with 65 checks against the raw CMS v323r0 text files before we published it. The record count matches the 4 file totals on the CMS page: 2,637,645. Every test pair returns the same column order, indicator and rationale as the CMS file. We also checked reversed input, codes at the first line of each data slice, a deleted edit such as 0001A + 90473, and pairs with no edit.</p>
+<p>Found a pair that looks wrong? <a href="https://medicalbilling101.com/contact/">Contact us</a> with the 2 codes, and we will check it.</p>
+
+<h2>Frequently asked questions</h2>
+<h3>Is this NCCI edit checker free?</h3>
+<p>Yes. It is free and needs no sign-up. The codes you enter stay in your browser. The tool downloads only the part of the CMS edit file it needs.</p>
+<h3>Which NCCI file does the checker use?</h3>
+<p>It uses the Medicare NCCI PTP edits for practitioner services, version v323r0, effective October 1, 2026. Hospital outpatient edits are a separate file and are not included.</p>
+<h3>Does the order of the two codes matter?</h3>
+<p>No. Enter the codes in any order. The checker looks for an edit in both directions and tells you which code is column 1 and which is column 2.</p>
+<h3>Can modifier 25 bypass an NCCI edit?</h3>
+<p>Yes, when the edit has modifier indicator 1 and the E/M visit is significant and separately identifiable. Modifier 25 is one of the global surgery modifiers the policy manual lists as NCCI PTP-associated.</p>
+<h3>Do commercial payers use NCCI edits?</h3>
+<p>Many do, but not all, and some add their own edits. Medicaid programs use a separate Medicaid NCCI file. Check the payer policy when the claim is not Medicare.</p>
+<h3>How often do NCCI edits change?</h3>
+<p>CMS updates the PTP edit files every quarter. The next update is effective January 1, 2027, and we will load it then.</p>
+
+<h2>Sources</h2>
+<ul>
+<li><a href="https://www.cms.gov/medicare/coding-billing/national-correct-coding-initiative-ncci-edits/medicare-ncci-procedure-procedure-ptp-edits" target="_blank" rel="noopener">CMS, Medicare NCCI Procedure to Procedure (PTP) Edits: practitioner PTP edits v323r0, effective October 1, 2026.</a></li>
+<li><a href="https://www.cms.gov/files/document/01-chapter1-ncci-medicare-policy-manual-2026-final.pdf" target="_blank" rel="noopener">CMS, NCCI Policy Manual for Medicare Services, Chapter 1, General Correct Coding Policies (revised January 1, 2026).</a></li>
+<li><a href="https://www.cms.gov/medicare/coding-billing/national-correct-coding-initiative-ncci-edits/medicare-ncci-policy-manual" target="_blank" rel="noopener">CMS, Medicare NCCI Policy Manual (2026) index.</a></li>
+</ul>
+<p><em>This checker is an educational guide, not coding or legal advice. Payer policies and the medical record decide the final claim.</em></p>
+
+<p class="disclaimer">This tool is general reference information. It is not legal, billing or compliance advice. Rules and payer policies change. Check the current official source and your payer contract before you file, appeal or write off a claim.</p>
+<footer class="page-footer">
+<p>Live page: <a href="https://medicalbilling101.com/tools/ncci-edit-checker/">https://medicalbilling101.com/tools/ncci-edit-checker/</a></p>
+<p>By Manikandan J, CPC, CRCR · <a href="https://medicalbilling101.com/">Medical Billing 101</a></p>
+<p><a href="../index.html">Back to all tools</a></p>
+</footer>
+</div>
+<script src="ptp.js" defer></script>
+</body>
+</html>

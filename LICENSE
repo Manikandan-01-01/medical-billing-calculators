@@ -1,0 +1,76 @@
+MIT License
+
+Copyright (c) 2026 Manikandan J
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+------------------------------------------------------------------------
+Data terms (not part of the MIT grant above)
+
+Some folders include data files built from official public sources. The MIT
+License covers the code and the compilation work. It does not replace the
+terms that apply to the underlying data.
+
+1. CMS files (U.S. government works)
+
+   The RVU, global period, NCCI PTP and MUE tables were built from files
+   published by the Centers for Medicare & Medicaid Services:
+
+   - CY 2026 Physician Fee Schedule Relative Value File, version RVU26D
+     (released 08/26/2026), including GPCI values.
+     https://www.cms.gov/medicare/payment/fee-schedules/physician/pfs-relative-value-files/rvu26d
+   - Medicare NCCI practitioner procedure-to-procedure edits, version 32.3
+     revision 0, effective October 1, 2026.
+     https://www.cms.gov/medicare/coding-billing/national-correct-coding-initiative-ncci-edits/medicare-ncci-procedure-procedure-ptp-edits
+   - Medicare NCCI Practitioner Services Medically Unlikely Edits, effective
+     October 1, 2026 (Q4 2026).
+     https://www.cms.gov/medicare/coding-billing/national-correct-coding-initiative-ncci-edits/medicare-ncci-medically-unlikely-edits
+
+   Works of the U.S. federal government are not subject to U.S. copyright
+   protection (17 U.S.C. § 105). CMS may update or replace these files.
+   This repository is a snapshot, not the official source. Always confirm a
+   value against the current CMS file before you rely on it.
+
+2. CPT® short descriptors
+
+   The CMS relative value and related files include short descriptors that
+   use CPT wording. CPT is a registered trademark of the American Medical
+   Association. The AMA holds the copyright in CPT. This repository
+   redistributes those short descriptors only as they appear in the CMS
+   public files, so the tools can label a code. It is not a substitute for
+   a current CPT codebook or an AMA license. If you redistribute this
+   data, you are responsible for complying with AMA terms that apply to
+   your use.
+
+3. X12 CARC and RARC descriptions
+
+   Official Claim Adjustment Reason Code and Remittance Advice Remark Code
+   descriptions in the denial code lookup are copied verbatim from the X12
+   code lists, with usage notes omitted. X12 holds the copyright on those
+   official descriptions. This table is a convenience copy, not a
+   substitute for the current lists:
+
+   - https://x12.org/codes/claim-adjustment-reason-codes
+   - https://x12.org/codes/remittance-advice-remark-codes
+
+4. NPPES NPI Registry
+
+   The NPI lookup does not bundle registry data. It queries the public CMS
+   NPPES NPI Registry API (version 2.1). Use of that API is subject to
+   CMS terms for the registry: https://npiregistry.cms.hhs.gov/api-page

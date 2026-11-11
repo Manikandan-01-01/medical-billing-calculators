@@ -1,0 +1,81 @@
+/* Medical Billing 101 – Appeal Letter Generator. Matches approved mockup C. */
+.mbx-alg{--t:#0f766e;--td:#0b5d57;--n:#0b3c5d;--tx:#1f2937;--mu:#4b5563;--bd:#e2e8f0;--tint:#ecf6f5;--in:#cbd5e1;font-family:inherit;color:var(--tx);margin:0 0 1.5em}
+.mbx-alg *,.mbx-alg *::before,.mbx-alg *::after{box-sizing:border-box}
+.mbx-alg [hidden]{display:none!important}
+.mbx-alg__grid{display:grid;grid-template-columns:minmax(0,400px) minmax(0,1fr);gap:22px;align-items:start}
+.mbx-alg__card{background:#fff;border:1px solid var(--bd);border-radius:12px;padding:20px 22px}
+.mbx-alg h2{font-size:18px;line-height:1.3;margin:0 0 12px;display:flex;align-items:center;gap:8px;color:var(--n)}
+.mbx-alg__ic{display:inline-flex;color:var(--t)}
+.mbx-alg__privacy{display:flex;gap:8px;align-items:flex-start;margin:0 0 10px;padding:8px 11px;background:var(--tint);border:1px solid #cfe7e4;border-radius:8px;font-size:13px;line-height:1.45;color:var(--td);font-weight:600}
+.mbx-alg__privacy svg{flex:0 0 auto;margin-top:2px}
+.mbx-alg__tools{display:flex;justify-content:space-between;gap:10px;margin:0 0 6px}
+.mbx-alg__link{background:none;border:0;padding:2px 0;color:var(--t);font:inherit;font-size:13.5px;font-weight:600;text-decoration:underline;text-underline-offset:2px;cursor:pointer}
+.mbx-alg__jump{display:none}
+.mbx-alg fieldset{border:0;border-top:1px solid var(--bd);margin:12px 0 0;padding:12px 0 0;min-width:0}
+.mbx-alg legend{padding:0 6px 0 0;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--n)}
+.mbx-alg__fld{margin:0 0 11px;position:relative;min-width:0}
+.mbx-alg__fld label{display:block;font-size:12.5px;font-weight:600;color:var(--tx);margin:0 0 3px;line-height:1.35}
+.mbx-alg__opt{font-weight:400;color:var(--mu)}
+.mbx-alg input[type=text],.mbx-alg input[type=tel],.mbx-alg input[type=date],.mbx-alg input:not([type]),.mbx-alg select,.mbx-alg textarea{width:100%;border:1px solid var(--in);border-radius:7px;background:#fff;padding:7px 10px;font:inherit;font-size:14px;line-height:1.35;color:var(--tx);min-height:36px;margin:0}
+.mbx-alg textarea{resize:vertical;font-size:13.5px}
+.mbx-alg input:focus,.mbx-alg select:focus,.mbx-alg textarea:focus{outline:2px solid var(--t);outline-offset:1px;border-color:var(--t)}
+.mbx-alg [aria-invalid=true]{border-color:#b91c1c}
+.mbx-alg__two{display:grid;grid-template-columns:1fr 1fr;gap:0 10px}
+.mbx-alg__hint{display:block;font-size:11.5px;color:var(--mu);margin-top:3px;line-height:1.4}
+.mbx-alg__hint.is-ok{color:var(--td)}.mbx-alg__hint.is-err{color:#b91c1c}
+.mbx-alg__codeinfo{display:block;font-size:12px;color:var(--mu);margin-top:4px;line-height:1.45}
+.mbx-alg__codeinfo a{color:var(--t);font-weight:600;white-space:nowrap}
+.mbx-alg__lb{position:absolute;z-index:30;left:0;right:0;top:62px;max-height:280px;overflow:auto;margin:0;padding:4px;list-style:none;background:#fff;border:1px solid var(--bd);border-top:3px solid var(--t);border-radius:0 0 10px 10px;box-shadow:0 12px 30px rgba(11,60,93,.16)}
+.mbx-alg__lb li{padding:6px 9px;border-radius:6px;font-size:13.5px;line-height:1.35;cursor:pointer;margin:0}
+.mbx-alg__lb li b{color:var(--n);margin-right:4px}
+.mbx-alg__lb li:hover,.mbx-alg__lb li.is-active{background:var(--tint)}
+.mbx-alg__lb .mbx-alg__none{cursor:default;color:var(--mu)}
+.mbx-alg__note p{margin:0 0 8px;padding:7px 10px;background:#fffbeb;border:1px solid #fde68a;border-radius:7px;font-size:12.5px;line-height:1.45;color:#78350f}
+.mbx-alg__checks{display:grid;gap:5px;margin:0 0 11px}
+.mbx-alg__chk{display:flex;gap:8px;align-items:flex-start;font-size:13.5px;line-height:1.4;cursor:pointer;margin:0}
+.mbx-alg__chk input{margin:2px 0 0;width:16px;height:16px;flex:0 0 auto;accent-color:var(--t)}
+.mbx-alg__preview{position:sticky;top:16px}
+.mbx-alg__ph{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin:0 0 10px}
+.mbx-alg__ph h2{margin:0}
+.mbx-alg__live{font-size:11px;font-weight:700;color:var(--td);background:var(--tint);border-radius:20px;padding:2px 8px;margin-left:4px;letter-spacing:.03em}
+.mbx-alg__acts{display:flex;gap:8px;flex-wrap:wrap}
+.mbx-alg__btn{display:inline-block;background:var(--t);color:#fff;border:1.5px solid var(--t);border-radius:8px;padding:8px 14px;font:inherit;font-weight:600;font-size:14px;line-height:1.3;cursor:pointer}
+.mbx-alg__btn:hover{background:var(--td);border-color:var(--td)}
+.mbx-alg__btn--ghost{background:#fff;color:var(--t)}
+.mbx-alg__btn--ghost:hover{background:var(--tint);color:var(--td)}
+.mbx-alg__btn--plain{background:#fff;color:var(--mu);border-color:var(--in)}
+.mbx-alg__btn--plain:hover{background:#f8fafc;color:var(--tx);border-color:var(--mu)}
+.mbx-alg__btn:focus-visible,.mbx-alg__link:focus-visible,.mbx-alg__paper:focus-visible{outline:3px solid #f59e0b;outline-offset:2px}
+.mbx-alg__status{min-height:1.2em;margin:0 0 6px;font-size:13px;color:var(--td);font-weight:600}
+.mbx-alg__paper{border:1px solid var(--bd);border-radius:8px;background:#fcfcfd;padding:22px 26px;font-family:Georgia,"Times New Roman",serif;font-size:13.6px;line-height:1.55;color:#111827;max-height:calc(100vh - 150px);overflow:auto}
+.mbx-alg__paper p{margin:0 0 10px;font-size:13.6px}
+.mbx-alg__paper .mbx-alg__re strong:first-child{font-size:14px}
+.mbx-alg__paper .mbx-alg__sig{margin-top:14px}
+.mbx-alg mark{background:#fff7d6;color:inherit;padding:0 2px;border-radius:2px}
+
+.mbx-alg .mbx-alg__blank{color:#9a3412;background:#fff1e6;border-radius:2px;padding:0 2px;font-style:italic}
+.mbx-alg__legend{margin:8px 0 0;font-size:12px;color:var(--mu)}
+.mbx-alg__disc{margin:16px 0 0;font-size:13.5px;line-height:1.5;color:var(--mu);background:#fff;border:1px solid var(--bd);border-left:4px solid #f59e0b;border-radius:8px;padding:9px 14px}
+@media (max-width:900px){
+	.mbx-alg__grid{grid-template-columns:1fr}
+	.mbx-alg__preview{position:static}
+	.mbx-alg__paper{max-height:none;padding:16px}
+	.mbx-alg__jump{display:inline}
+}
+@media (max-width:480px){
+	.mbx-alg__card{padding:16px 14px}
+	.mbx-alg__two{grid-template-columns:1fr}
+	.mbx-alg__acts{width:100%}
+	.mbx-alg__btn{flex:1 1 auto;text-align:center;padding:9px 10px}
+}
+@media print{
+	body *{visibility:hidden!important}
+	.mbx-alg__paper,.mbx-alg__paper *{visibility:visible!important}
+	.mbx-alg__paper{position:absolute;left:0;top:0;width:100%;max-height:none;overflow:visible;border:0;background:#fff;padding:0;font-size:12pt}
+	.mbx-alg__paper p{font-size:12pt}
+	.mbx-alg mark,.mbx-alg .mbx-alg__blank{background:none;font-style:normal;color:#000;padding:0}
+	@page{margin:1in}
+}
+/* Widen the tool page beyond the 740px article column (body class added in functions.php). */
+body.mbx-tool-page .site-content .content-area{max-width:1120px}
+body.mbx-tool-page .entry-content>:not(.mbx-alg):not(.mbx-tfl){max-width:780px}

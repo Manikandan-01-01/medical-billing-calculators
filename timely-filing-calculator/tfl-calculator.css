@@ -1,0 +1,64 @@
+/* Medical Billing 101 – Timely Filing / Appeal Deadline Calculator + mini widget (mockup B). */
+.mbx-tfl,.mbx-tfl-mini{--t:#0f766e;--td:#0b5d57;--n:#0b3c5d;--tx:#1f2937;--mu:#4b5563;--bd:#e2e8f0;--tint:#ecf6f5;--in:#cbd5e1;font-family:inherit;color:var(--tx)}
+.mbx-tfl *,.mbx-tfl-mini *{box-sizing:border-box}
+.mbx-tfl [hidden],.mbx-tfl-mini [hidden]{display:none!important}
+.mbx-tfl{margin:0 0 1.5em}
+.mbx-tfl__grid{display:grid;grid-template-columns:minmax(0,420px) minmax(0,1fr);gap:22px;align-items:start}
+.mbx-tfl__card{background:#fff;border:1px solid var(--bd);border-radius:12px;padding:20px 22px}
+.mbx-tfl h2{font-size:18px;line-height:1.3;margin:0 0 12px;display:flex;align-items:center;gap:8px;color:var(--n)}
+.mbx-tfl__ic{display:inline-flex;color:var(--t)}
+.mbx-tfl__privacy{margin:0 0 12px;padding:7px 11px;background:var(--tint);border:1px solid #cfe7e4;border-radius:8px;font-size:13px;color:var(--td);font-weight:600}
+.mbx-tfl__fld{margin:0 0 12px;min-width:0}
+.mbx-tfl label,.mbx-tfl-mini label{display:block;font-size:12.5px;font-weight:600;margin:0 0 3px;line-height:1.35;color:var(--tx)}
+.mbx-tfl__opt{font-weight:400;color:var(--mu)}
+.mbx-tfl input[type=date],.mbx-tfl input[type=number],.mbx-tfl input[type=text],.mbx-tfl select,.mbx-tfl-mini input,.mbx-tfl-mini select{width:100%;border:1px solid var(--in);border-radius:7px;background:#fff;padding:7px 10px;font:inherit;font-size:14px;line-height:1.35;color:var(--tx);min-height:36px;margin:0}
+.mbx-tfl input:focus,.mbx-tfl select:focus,.mbx-tfl-mini input:focus,.mbx-tfl-mini select:focus{outline:2px solid var(--t);outline-offset:1px;border-color:var(--t)}
+.mbx-tfl__two{display:grid;grid-template-columns:1fr 1fr;gap:0 10px}
+.mbx-tfl__limit{border:0;margin:0;padding:0;min-width:0}
+.mbx-tfl__limit legend{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--n);padding:0;margin:0 0 6px}
+.mbx-tfl__pnote{margin:5px 0 0;font-size:12px;line-height:1.45;color:var(--mu)}
+.mbx-tfl__pnote.is-ex{color:#92400e;background:#fffbeb;border:1px solid #fde68a;border-radius:6px;padding:5px 8px}
+.mbx-tfl__chk{display:flex!important;gap:8px;align-items:flex-start;font-weight:400!important;font-size:13.5px!important;margin:0 0 12px!important;cursor:pointer}
+.mbx-tfl__chk input{margin:2px 0 0;width:16px;height:16px;flex:0 0 auto;accent-color:var(--t)}
+.mbx-tfl__acts{display:flex;gap:8px;flex-wrap:wrap;margin-top:4px}
+.mbx-tfl__btn{display:inline-block;background:var(--t);color:#fff;border:1.5px solid var(--t);border-radius:8px;padding:8px 16px;font:inherit;font-weight:600;font-size:14px;line-height:1.3;cursor:pointer;white-space:nowrap}
+.mbx-tfl__btn:hover{background:var(--td);border-color:var(--td)}
+.mbx-tfl__btn--ghost{background:#fff;color:var(--t)}
+.mbx-tfl__btn--ghost:hover{background:var(--tint);color:var(--td)}
+.mbx-tfl__btn:focus-visible,.mbx-tfl-mini a:focus-visible{outline:3px solid #f59e0b;outline-offset:2px}
+.mbx-tfl__empty{margin:0;padding:18px;border:1px dashed var(--in);border-radius:10px;color:var(--mu);font-size:14.5px;text-align:center}
+.mbx-tfl__res{border-radius:10px;padding:16px 18px;border:1px solid;border-left-width:5px;margin:0 0 12px}
+.mbx-tfl__res.is-ok{background:#ecfdf5;border-color:#a7f3d0;border-left-color:#15803d}
+.mbx-tfl__res.is-soon{background:#fffbeb;border-color:#fde68a;border-left-color:#d97706}
+.mbx-tfl__res.is-over{background:#fef2f2;border-color:#fecaca;border-left-color:#b91c1c}
+.mbx-tfl__badge{display:inline-block;font-size:12px;font-weight:700;border-radius:20px;padding:2px 10px;color:#fff;letter-spacing:.02em}
+.is-ok .mbx-tfl__badge{background:#15803d}.is-soon .mbx-tfl__badge{background:#b45309}.is-over .mbx-tfl__badge{background:#b91c1c}
+.mbx-tfl__type{margin:10px 0 0;font-size:13px;font-weight:600;color:var(--mu);text-transform:uppercase;letter-spacing:.05em}
+.mbx-tfl__date{margin:2px 0 2px;font-size:26px;line-height:1.25;font-weight:700;color:var(--n)}
+.mbx-tfl__left{margin:0;font-size:17px;font-weight:700}
+.is-ok .mbx-tfl__left{color:#166534}.is-soon .mbx-tfl__left{color:#92400e}.is-over .mbx-tfl__left{color:#991b1b}
+.mbx-tfl__steps{margin:0 0 12px;padding-left:20px;font-size:14px;line-height:1.6}
+.mbx-tfl__steps b{color:var(--n)}
+.mbx-tfl__warn{margin:0 0 10px;padding:7px 10px;background:#fffbeb;border:1px solid #fde68a;border-radius:7px;font-size:13px;color:#78350f}
+.mbx-tfl__fine{margin:14px 0 0;font-size:12px;line-height:1.5;color:var(--mu)}
+.mbx-tfl__disc{margin:16px 0 0;font-size:13.5px;line-height:1.5;color:var(--mu);background:#fff;border:1px solid var(--bd);border-left:4px solid #f59e0b;border-radius:8px;padding:9px 14px}
+@media (max-width:860px){.mbx-tfl__grid{grid-template-columns:1fr}}
+@media (max-width:420px){.mbx-tfl__card{padding:16px 14px}.mbx-tfl__date{font-size:22px}}
+
+/* Mini widget */
+.mbx-tfl-mini{border:1px solid var(--bd);border-radius:10px;background:#fbfdfd;padding:14px 18px;margin:6px 0 20px;max-width:640px}
+.mbx-tfl-mini__h{display:flex;align-items:center;gap:8px;font-weight:700;color:var(--n);font-size:15.5px;margin:0 0 10px}
+.mbx-tfl-mini__h svg{color:var(--t);flex:0 0 auto}
+.mbx-tfl-mini__row{display:flex;gap:10px;align-items:flex-end}
+.mbx-tfl-mini__f{flex:1;min-width:0}
+.mbx-tfl-mini label{color:var(--mu);font-size:12px}
+.mbx-tfl-mini__res{margin-top:10px;background:var(--tint);border-radius:7px;padding:8px 12px;font-size:14px;line-height:1.45;border-left:4px solid transparent}
+.mbx-tfl-mini__res b{color:var(--td)}
+.mbx-tfl-mini__res.is-ok{border-left-color:#15803d}.mbx-tfl-mini__res.is-soon{background:#fffbeb;border-left-color:#d97706}.mbx-tfl-mini__res.is-over{background:#fef2f2;border-left-color:#b91c1c}
+.mbx-tfl-mini__res.is-soon .mbx-tfl-mini__left{color:#92400e;font-weight:700}.mbx-tfl-mini__res.is-over .mbx-tfl-mini__left{color:#991b1b;font-weight:700}
+.mbx-tfl-mini__more{font-size:13.5px;font-weight:600;margin-top:8px;display:inline-block;text-decoration:none;color:var(--t)}
+.mbx-tfl-mini__more:hover{text-decoration:underline}
+@media (max-width:560px){.mbx-tfl-mini__row{flex-direction:column;align-items:stretch}.mbx-tfl-mini{padding:12px 14px}}
+body.mbx-tool-page .site-content .content-area{max-width:1120px}
+body.mbx-tool-page .entry-content>:not(.mbx-alg):not(.mbx-tfl){max-width:780px}
+.mbx-tfl-mini-wrap{margin:1.2em 0}

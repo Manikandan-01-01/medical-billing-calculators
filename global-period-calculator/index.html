@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Global Period Calculator</title>
+<meta name="description" content="Global Period Calculator — standalone copy from Medical Billing 101.">
+<link rel="stylesheet" href="../assets/page.css">
+<link rel="stylesheet" href="tool.css">
+
+</head>
+<body>
+<div class="site-bar"><div class="wrap"><a href="../index.html">Medical billing calculators</a></div></div>
+<div class="wrap">
+<nav class="crumb" aria-label="Breadcrumb"><a href="../index.html">All tools</a> <span aria-hidden="true">›</span> Global Period Calculator</nav>
+<h1>Global Period Calculator</h1>
+<p class="mbx-tool-intro">This global period calculator shows the Medicare global surgery days for a CPT or HCPCS code and the exact date the global period ends. Enter the code and the date of surgery to see the pre-op day, the last post-op day, the days left and the modifiers for services you can bill separately.</p>
+<p class="gp-byline">By <a href="https://medicalbilling101.com/about/">Manikandan J, CPC, CRCR</a> &middot; Data: CMS CY 2026 PFS (file version RVU26D) &middot; Updated November 11, 2026</p>
+
+<div id="mbx-gp" data-src="data/global-days-cy2026-rvu26d.txt">
+<div class="gp-grid">
+<form class="gp-card" novalidate>
+<div class="gp-fld"><label for="gp-code">CPT or HCPCS code</label><input type="text" id="gp-code" name="code" autocomplete="off" maxlength="7" placeholder="e.g. 27447" aria-describedby="gp-h1" required><p class="gp-hint" id="gp-h1">Enter the surgical procedure code.</p></div>
+<div class="gp-fld"><label for="gp-dos">Date of surgery</label><input type="date" id="gp-dos" name="dos" required></div>
+<div class="gp-fld" id="gp-yyy-w" hidden><label for="gp-yyy">Post-op period your MAC assigned (YYY codes)</label><select id="gp-yyy" name="yyy"><option value="">Choose 0, 10 or 90 days</option><option value="000">0 days (000)</option><option value="010">10 days (010)</option><option value="090">90 days (090)</option></select></div>
+<button type="submit" class="gp-btn">Calculate global period</button>
+<p class="gp-msg" id="gp-msg" role="status" aria-live="polite"></p>
+</form>
+<div class="gp-card" aria-live="polite"><div id="gp-out" hidden></div><p class="gp-empty" id="gp-empty">Enter a code and the date of surgery. You will see the global indicator, the pre-op day, the last day of the global period, the days left and the modifiers that let you bill separate services.</p></div>
+</div>
+<p class="gp-src">Data: CMS CY 2026 PFS (file version RVU26D, released 08/26/2026), global days field. Rules: Medicare Claims Processing Manual Ch. 12 &sect;40 and MLN907166. CPT codes and descriptions only are copyright 2026 American Medical Association. All rights reserved.</p>
+<noscript><p>The global period calculator needs JavaScript. It runs in your browser and nothing is sent or saved.</p></noscript>
+</div>
+
+<div class="mbx-keybox">
+<p><strong>Key takeaways</strong></p>
+<ul>
+<li>A 90-day global covers 92 days: the day before surgery, the day of surgery and 90 days after.</li>
+<li>A 10-day global covers 11 days: the day of surgery and 10 days after.</li>
+<li>A 000 code covers the day of the procedure only.</li>
+<li>Modifiers 24, 25, 57, 58, 78, 79 and FT mark services Medicare can pay separately during a global period.</li>
+</ul>
+</div>
+
+<h2>What is a global period?</h2>
+<p>A <strong>global period</strong> is the span of days around a surgery when related care is paid as part of the surgery. Medicare calls this the global surgical package. It covers pre-op visits after the decision to operate, the surgery, related post-op visits, complications that do not need a return to the operating room, and routine items like dressing changes and suture removal (<a href="https://www.cms.gov/regulations-and-guidance/guidance/manuals/downloads/clm104c12.pdf" target="_blank" rel="noopener">Claims Processing Manual, Ch. 12, &sect;40.1</a>).</p>
+<p>Each code&rsquo;s global days come from the CMS physician fee schedule. This Medicare global period calculator reads them straight from the CMS 2026 relative value file.</p>
+
+<h2>How do you calculate a global period?</h2>
+<p>Count from the date of surgery. For a major surgery (090), CMS counts 1 day before surgery, the day of surgery and the 90 days after it. For a minor procedure (010), CMS counts the day of surgery and the 10 days after it. CMS gives this example: surgery on January 5 has a pre-op day of January 4 and a last post-op day of April 5. A 10-day procedure on January 5 ends January 15 (<a href="https://www.cms.gov/regulations-and-guidance/guidance/manuals/downloads/clm104c12.pdf" target="_blank" rel="noopener">Ch. 12, &sect;40.1.E</a>).</p>
+<p>The global surgery calculator does this date math for you. It handles month ends and leap years. For example, a 90-day global from January 5, 2028 ends April 4, 2028, one day earlier than in 2026.</p>
+
+<h2>What do the global days indicators mean?</h2>
+<p><strong>Global days</strong> are the number of post-op days Medicare bundles with a code. The CMS relative value file gives every code one of 7 global days values. The counts below are the codes in the RVU26D file.</p>
+<figure class="wp-block-table gp-ex"><table>
+<thead><tr><th>Indicator</th><th>Meaning</th><th>Codes in file</th></tr></thead>
+<tbody>
+<tr><td>000</td><td>Endoscopy or minor procedure; pre-op and post-op work on the procedure day only</td><td>1,274</td></tr>
+<tr><td>010</td><td>Minor procedure with a 10-day post-op period</td><td>469</td></tr>
+<tr><td>090</td><td>Major surgery with a 1-day pre-op and 90-day post-op period</td><td>3,771</td></tr>
+<tr><td>MMM</td><td>Maternity code; the usual global period does not apply</td><td>17</td></tr>
+<tr><td>XXX</td><td>The global concept does not apply</td><td>9,615</td></tr>
+<tr><td>YYY</td><td>Your MAC decides whether a global applies and sets it at pricing</td><td>1,049</td></tr>
+<tr><td>ZZZ</td><td>Add-on code; always in the global period of the primary service</td><td>996</td></tr>
+</tbody></table></figure>
+<p>Source: the global surgery field definitions in the <a href="https://www.cms.gov/medicare/payment/fee-schedules/physician/pfs-relative-value-files/rvu26d" target="_blank" rel="noopener">CMS RVU26D file documentation</a>. For YYY codes, the calculator asks which period your MAC set. For ZZZ codes, enter the primary procedure code instead.</p>
+
+<h2>What is not included in the global surgery package?</h2>
+<p>Medicare pays these services separately, even during a global period (<a href="https://www.cms.gov/regulations-and-guidance/guidance/manuals/downloads/clm104c12.pdf" target="_blank" rel="noopener">Ch. 12, &sect;40.1.B</a>):</p>
+<ul>
+<li>The first evaluation that leads to the decision for a major surgery. For minor procedures, that evaluation is always included.</li>
+<li>Visits unrelated to the diagnosis for the surgery, unless they are for complications.</li>
+<li>Treatment of the underlying condition, and diagnostic tests and procedures.</li>
+<li>Clearly distinct procedures that are not re-operations or treatment for complications. A new post-op period begins.</li>
+<li>Treatment for complications that needs a return trip to the operating room.</li>
+<li>Critical care (99291, 99292) unrelated to the surgery.</li>
+</ul>
+<p>When a post-op visit denies as bundled, I check two things first: the end date of the global period and the diagnosis on the visit. A bundled visit often comes back as <a href="https://medicalbilling101.com/co-97-denial-code/">CO-97</a>.</p>
+
+<h2>Which modifiers apply during the global period?</h2>
+<p>Medicare pays a visit or procedure in the global period only when the right modifier shows why it is separate. Without 24, 25, 57 or FT, MACs deny E/M services on the day of surgery or in the post-op period (<a href="https://www.cms.gov/regulations-and-guidance/guidance/manuals/downloads/clm104c12.pdf" target="_blank" rel="noopener">Ch. 12, &sect;40.4</a>).</p>
+<p><strong>Modifier 24</strong> is for an unrelated E/M visit during the post-op period. <strong>Modifier 79</strong> is for an unrelated procedure during the post-op period, and it starts a new global period (<a href="https://www.cms.gov/regulations-and-guidance/guidance/manuals/downloads/clm104c12.pdf" target="_blank" rel="noopener">Ch. 12, &sect;40.2.A.7</a>).</p>
+<figure class="wp-block-table gp-ex"><table>
+<thead><tr><th>Modifier</th><th>Use it for</th><th>Globals</th></tr></thead>
+<tbody>
+<tr><td>57</td><td>E/M on the day before or day of major surgery that leads to the decision to operate</td><td>090</td></tr>
+<tr><td>25</td><td>Significant, separately identifiable E/M on the day of a procedure</td><td>000, 010, 090</td></tr>
+<tr><td>24</td><td>Unrelated E/M by the same physician in the post-op period</td><td>010, 090</td></tr>
+<tr><td>58</td><td>Staged or related procedure; a new post-op period begins</td><td>010, 090</td></tr>
+<tr><td>78</td><td>Unplanned return to the operating room for a related procedure</td><td>010, 090</td></tr>
+<tr><td>79</td><td>Unrelated procedure by the same physician; a new post-op period begins</td><td>010, 090</td></tr>
+<tr><td>FT</td><td>Unrelated critical care or E/M during the global period</td><td>010, 090</td></tr>
+<tr><td>54, 55, 56</td><td>Transfer of care: surgery only, post-op only, pre-op only</td><td>010, 090</td></tr>
+</tbody></table></figure>
+<p>These rules come from <a href="https://www.cms.gov/regulations-and-guidance/guidance/manuals/downloads/clm104c12.pdf" target="_blank" rel="noopener">Claims Processing Manual Ch. 12, &sect;40.2</a> and the <a href="https://www.cms.gov/files/document/mln907166-global-surgery-booklet.pdf" target="_blank" rel="noopener">CMS MLN Global Surgery booklet (MLN907166)</a>. The calculator shows only the modifiers that fit the code&rsquo;s global days.</p>
+
+<h2>How is split global care paid with modifiers 54, 55 and 56?</h2>
+<p>CMS lists a pre-op, intra-op and post-op percentage for each 010 and 090 code. A surgeon who bills 54 gets the pre-op and intra-op share. The doctor who bills 55 gets the post-op share. For 27447, total knee arthroplasty, the file lists 10% pre-op, 69% intra-op and 21% post-op. So 54 pays 79% and 55 pays 21% of the fee schedule amount (<a href="https://www.cms.gov/regulations-and-guidance/guidance/manuals/downloads/clm104c12.pdf" target="_blank" rel="noopener">Ch. 12, &sect;40.4.B</a>).</p>
+<p>Both claims use the same code and the date of surgery. Each doctor keeps the written transfer agreement. Split care does not apply to 000 codes. To see the dollar amount, use the <a href="../rvu-calculator/">RVU Calculator</a> and multiply the payment by the share.</p>
+
+<h2>What do global days calculator examples look like for 2026?</h2>
+<p>These examples use a date of surgery of January 5, 2026 and the global days in the CMS RVU26D file.</p>
+<figure class="wp-block-table gp-ex"><table>
+<thead><tr><th>Code</th><th>CMS short descriptor</th><th>Global</th><th>Pre-op day</th><th>Last day of global</th><th>Total days</th></tr></thead>
+<tbody><tr><td>27447</td><td>Total knee arthroplasty</td><td>090</td><td>January 4, 2026</td><td>April 5, 2026</td><td>92</td></tr><tr><td>17000</td><td>Destruct premalg lesion</td><td>010</td><td>None</td><td>January 15, 2026</td><td>11</td></tr><tr><td>11042</td><td>Dbrdmt subq tis 1st 20sqcm/&lt;</td><td>000</td><td>None</td><td>January 5, 2026</td><td>1</td></tr><tr><td>20610</td><td>Drain/inj joint/bursa w/o us</td><td>000</td><td>None</td><td>January 5, 2026</td><td>1</td></tr><tr><td>59400</td><td>Obstetrical care</td><td>MMM</td><td colspan="3">No count: the usual global period does not apply</td></tr></tbody></table></figure>
+
+<h2>How do you use the post-op calculator?</h2>
+<ol>
+<li><strong>Enter the procedure code.</strong> Use the surgical code, not an add-on code.</li>
+<li><strong>Enter the date of surgery.</strong> It defaults to today.</li>
+<li><strong>Press Calculate.</strong> You see the global indicator, the pre-op day, the last day of the global, the days left and the modifier guidance.</li>
+<li><strong>For YYY codes,</strong> pick the post-op period your MAC assigned.</li>
+</ol>
+<p>For the full rules with examples, read our <a href="https://medicalbilling101.com/global-surgical-package-guide-reference-page-on-10-day-and-90-day-global-period-billing-rules/">global surgical package guide</a>. If a claim was denied, check the <a href="../denial-code-lookup/">denial code library</a> and use the <a href="../appeal-letter-generator/">Appeal Letter Generator</a>. See all our <a href="https://medicalbilling101.com/tools/">free medical billing tools</a>.</p>
+
+<h2>How did we test this global period calculator?</h2>
+<!-- ORIGINAL DATA: calculator test results against the CMS file and manual, Nov 11, 2026 -->
+<p>We tested the calculator against 3 CMS sources before we published it. The global days for 27447, 11042, 17000, 20610 and 59400 match the RVU26D file. The date math reproduces both CMS examples in the manual: January 5 to April 5, and January 5 to January 15. We also ran 12 date checks for month ends and leap years, such as February 28, 2028 to March 9, 2028.</p>
+<p>Found a date that looks wrong? <a href="https://medicalbilling101.com/contact/">Contact us</a> with the code and date, and we will check it.</p>
+
+<h2>Frequently asked questions</h2>
+<h3>Is this global period calculator free?</h3>
+<p>Yes. It is free and needs no sign-up. The code and date you enter stay in your browser. The tool downloads the CMS data file and does the date math on your device.</p>
+<h3>Does the day of surgery count in the global period?</h3>
+<p>Yes. For a 10-day global, CMS counts the day of surgery and the 10 days after it, so the total is 11 days. For a 90-day global, CMS also counts the day before surgery, for a total of 92 days.</p>
+<h3>When does a 90-day global period end?</h3>
+<p>It ends 90 days after the day of surgery. CMS gives the example of surgery on January 5: the pre-op day is January 4 and the last day of the post-op period is April 5.</p>
+<h3>Do global surgery rules apply to other doctors?</h3>
+<p>The global package covers the surgeon and members of the same group with the same specialty. Services of other physicians are not included, except when the surgeon and the other physician agree on a transfer of care.</p>
+<h3>Do commercial payers use the same global periods?</h3>
+<p>Not always. Commercial payers set their own policies. Check the payer’s manual or contract. The calculator uses Medicare’s CMS global days.</p>
+<h3>Will global days change in 2027?</h3>
+<p>They can. CMS publishes the global days for every code in its yearly relative value file. We will load the 2027 file when CMS posts it.</p>
+
+<h2>Sources</h2>
+<ul>
+<li><a href="https://www.cms.gov/regulations-and-guidance/guidance/manuals/downloads/clm104c12.pdf" target="_blank" rel="noopener">CMS, Medicare Claims Processing Manual, Chapter 12, &sect;40 (Surgeons and Global Surgery).</a></li>
+<li><a href="https://www.cms.gov/files/document/mln907166-global-surgery-booklet.pdf" target="_blank" rel="noopener">CMS MLN, Global Surgery booklet, MLN907166 (December 2025).</a></li>
+<li><a href="https://www.cms.gov/medicare/payment/fee-schedules/physician/pfs-relative-value-files/rvu26d" target="_blank" rel="noopener">CMS, PFS Relative Value File RVU26D (CY 2026, released 08/26/2026): global days and pre/intra/post-op percentages.</a></li>
+</ul>
+
+<p class="disclaimer">This tool is general reference information. It is not legal, billing or compliance advice. Rules and payer policies change. Check the current official source and your payer contract before you file, appeal or write off a claim.</p>
+<footer class="page-footer">
+<p>Live page: <a href="https://medicalbilling101.com/tools/global-period-calculator/">https://medicalbilling101.com/tools/global-period-calculator/</a></p>
+<p>By Manikandan J, CPC, CRCR · <a href="https://medicalbilling101.com/">Medical Billing 101</a></p>
+<p><a href="../index.html">Back to all tools</a></p>
+</footer>
+</div>
+<script src="glob.js" defer></script>
+</body>
+</html>

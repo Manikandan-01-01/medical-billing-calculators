@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RVU Calculator</title>
+<meta name="description" content="RVU Calculator — standalone copy from Medical Billing 101.">
+<link rel="stylesheet" href="../assets/page.css">
+<link rel="stylesheet" href="tool.css">
+
+</head>
+<body>
+<div class="site-bar"><div class="wrap"><a href="../index.html">Medical billing calculators</a></div></div>
+<div class="wrap">
+<nav class="crumb" aria-label="Breadcrumb"><a href="../index.html">All tools</a> <span aria-hidden="true">›</span> RVU Calculator</nav>
+<h1>RVU Calculator</h1>
+<p class="mbx-tool-intro">This RVU calculator shows the 2026 Medicare relative value units and the estimated payment for any CPT or HCPCS code on the physician fee schedule. Enter the code, pick your Medicare locality and the setting, and it applies the official CMS formula and conversion factor.</p>
+<p class="rvu-byline">By <a href="https://medicalbilling101.com/about/">Manikandan J, CPC, CRCR</a> &middot; Data: CMS CY 2026 PFS (file version RVU26D) &middot; Updated November 10, 2026</p>
+
+<div id="mbx-rvu" data-src="data/rvu-data-cy2026-rvu26d.txt" data-cf="33.4009" data-cfq="33.5675">
+<div class="rvu-grid">
+<form class="rvu-card" novalidate>
+<div class="rvu-fld"><label for="rvu-code">CPT or HCPCS code</label><input type="text" id="rvu-code" name="code" inputmode="text" autocomplete="off" maxlength="9" placeholder="e.g. 99213" aria-describedby="rvu-h1" required><p class="rvu-hint" id="rvu-h1">Five characters. Add 26 or TC after the code, or pick it below.</p></div>
+<div class="rvu-fld"><label for="rvu-mod">Modifier</label><select id="rvu-mod" name="mod" disabled><option value="">None (global)</option></select></div>
+<div class="rvu-fld"><label for="rvu-loc">Medicare locality</label><select id="rvu-loc" name="loc"><option value="nat" data-g="1,1,1" selected>National (all GPCIs 1.000)</option></select></div>
+<fieldset><legend>Setting</legend><div class="rvu-rad"><label><input type="radio" name="rvu-set" value="n" checked> Non-facility (office)</label><label><input type="radio" name="rvu-set" value="f"> Facility (hospital, ASC)</label></div></fieldset>
+<fieldset><legend>Conversion factor</legend><div class="rvu-rad"><label><input type="radio" name="rvu-cf" value="n" checked> $33.4009 (most clinicians)</label><label><input type="radio" name="rvu-cf" value="q"> $33.5675 (qualifying APM participant)</label></div></fieldset>
+<button type="submit" class="rvu-btn">Calculate</button>
+<p class="rvu-msg" id="rvu-msg" role="status" aria-live="polite"></p>
+</form>
+<div class="rvu-card" aria-live="polite"><div id="rvu-out" hidden></div><p class="rvu-empty" id="rvu-empty">Enter a code and press Calculate. You will see the work, practice expense and malpractice RVUs, the GPCIs, the adjusted total and the estimated 2026 Medicare payment, with the formula.</p></div>
+</div>
+<p class="rvu-src">Data: CMS CY 2026 PFS (file version RVU26D, released 08/26/2026). Estimate only. CPT codes and descriptions only are copyright 2026 American Medical Association. All rights reserved.</p>
+<noscript><p>The RVU calculator needs JavaScript. It runs in your browser and nothing is sent or saved.</p></noscript>
+</div>
+
+<div class="mbx-keybox">
+<p><strong>Key takeaways</strong></p>
+<ul>
+<li>Every code has three RVUs: work, practice expense and malpractice.</li>
+<li>Medicare multiplies each RVU by its local GPCI, adds them up and multiplies by the conversion factor.</li>
+<li>The 2026 conversion factor is $33.4009 for most clinicians and $33.5675 for qualifying APM participants.</li>
+<li>The result is an estimate. Sequestration, modifiers and multiple procedure rules can lower the real payment.</li>
+</ul>
+</div>
+
+<h2>What is an RVU?</h2>
+<p>An <strong>RVU</strong> is a relative value unit: the number Medicare gives a service to show the resources it takes.<!-- ORIGINAL DATA: worked values computed from the CMS file --> Every code on the physician fee schedule has three RVUs. Work covers the clinician&rsquo;s time, skill and effort. Practice expense covers staff, space, equipment and supplies. Malpractice covers professional liability insurance. CMS publishes these values each year in its <a href="https://www.cms.gov/medicare/payment/fee-schedules/physician/pfs-relative-value-files" target="_blank" rel="noopener">PFS relative value files</a>.</p>
+<p>RVUs are relative. A code with 4.06 total RVUs takes about twice the resources of a code with 2.06. The dollar amount comes later, when the conversion factor is applied.</p>
+
+<h2>How is an RVU calculated into a Medicare payment?</h2>
+<p>Medicare multiplies each RVU by the matching GPCI for your locality, adds the three results, and multiplies the total by the conversion factor. CMS states the formula in its 2026 relative value file.</p>
+<p class="rvu-f"><strong>Payment</strong> = [(Work RVU &times; Work GPCI) + (PE RVU &times; PE GPCI) + (MP RVU &times; MP GPCI)] &times; Conversion factor.</p>
+<p>The calculator uses the non-facility practice expense RVU for office services and the facility PE RVU for hospital and ASC services. For example, 99213 has a work RVU of 1.30, a non-facility PE RVU of 1.46 and a malpractice RVU of 0.09. With national GPCIs of 1.000, that is 2.85 RVUs &times; $33.4009 = $95.19.</p>
+
+<h2>What is a wRVU?</h2>
+<p>A <strong>wRVU</strong> is the work RVU alone. It measures the clinician&rsquo;s own effort, not overhead or insurance. Many employed physicians are paid on productivity, and wRVUs are the common yardstick. The calculator shows the wRVU for each code, so you can add up a day&rsquo;s or a month&rsquo;s work.</p>
+<p>The wRVU does not change by locality. A 99214 carries 1.92 wRVUs in Alabama and in Manhattan. Only the payment changes, because the GPCI changes.</p>
+
+<h2>What is the 2026 Medicare conversion factor?</h2>
+<p>The <strong>conversion factor</strong> is the dollar value of one RVU. The 2026 Medicare physician fee schedule has two of them. Most clinicians are paid at $33.4009 per RVU. Qualifying participants in an advanced alternative payment model (APM) are paid at $33.5675. CMS set two factors for the first time in 2026, as the law requires. Both include a one-year 2.5% increase for 2026 only (<a href="https://www.cms.gov/newsroom/fact-sheets/calendar-year-cy-2026-medicare-physician-fee-schedule-final-rule-cms-1832-f" target="_blank" rel="noopener">CMS fact sheet</a>).</p>
+<p>The calculator defaults to $33.4009. Choose the higher factor only if the clinician is a qualifying APM participant for the year.</p>
+
+<h2>How does GPCI change Medicare payment?</h2>
+<p>A <strong>GPCI</strong> is a geographic practice cost index. It adjusts each RVU for local costs. Medicare has three GPCIs for each of its 109 payment localities, one for work, one for practice expense and one for malpractice. A GPCI above 1.000 raises payment, and a GPCI below 1.000 lowers it.</p>
+<p>For 2026, the work GPCI has a floor of 1.000, extended through January 1, 2027, per the <a href="https://www.cms.gov/medicare/payment/fee-schedules/physician/pfs-relative-value-files/rvu26d" target="_blank" rel="noopener">CMS GPCI file</a>. Alaska has a work GPCI floor of 1.500, and frontier states have a practice expense floor of 1.000. One code can pay very differently by place: 99213 in the office is $87.79 in Alabama and $117.58 in San Francisco.</p>
+
+<h2>What is the difference between facility and non-facility RVUs?</h2>
+<p>The facility rate applies when the service is done in a hospital, ASC, emergency room or skilled nursing facility. The non-facility rate applies in all other settings, such as the office. The facility rate is usually lower, because the facility bills its own costs separately. CMS marks some codes &ldquo;NA&rdquo; when a setting is rarely or never used.</p>
+<p>In payment posting, I check three things first when a Medicare allowed amount looks low: the locality, the place of service and the modifiers. One wrong place-of-service code can switch an office visit to the facility rate.</p>
+
+<h2>2026 RVU calculator examples: 99213, 99214 and 20610</h2>
+<p>These amounts use national GPCIs of 1.000 and the $33.4009 conversion factor. Pick your locality in the calculator to see your local rate.</p>
+<figure class="wp-block-table rvu-ex"><table>
+<thead><tr><th>Code</th><th>CMS short descriptor</th><th>wRVU</th><th>Total RVUs (non-facility)</th><th>Total RVUs (facility)</th><th>National non-facility</th><th>National facility</th></tr></thead>
+<tbody><tr><td>99213</td><td>Office o/p est low 20 min</td><td>1.30</td><td>2.85</td><td>1.72</td><td>$95.19</td><td>$57.45</td></tr><tr><td>99214</td><td>Office o/p est mod 30 min</td><td>1.92</td><td>4.06</td><td>2.53</td><td>$135.61</td><td>$84.50</td></tr><tr><td>20610</td><td>Drain/inj joint/bursa w/o us</td><td>0.77</td><td>2.06</td><td>1.19</td><td>$68.81</td><td>$39.75</td></tr></tbody>
+</table></figure>
+<p>Each figure matches the CMS 2026 relative value file and the CMS Physician Fee Schedule Look-Up Tool data for the same year.</p>
+
+<h2>What does this RVU calculator not include?</h2>
+<p>The calculator shows the fee schedule amount for one code, before claim-level rules. Treat it as an estimate. It does not apply these adjustments:</p>
+<ul>
+<li><strong>Multiple procedure reductions (MPPR).</strong> A second surgery or imaging service on the same day is often paid at a lower rate. On the remittance this can show as <a href="https://medicalbilling101.com/denial-codes/co-59/">CARC 59</a>.</li>
+<li><strong>Payment modifiers.</strong> Bilateral, assistant-at-surgery, co-surgeon and other modifiers change the amount. The calculator handles only 26, TC and 53, because CMS lists separate RVUs for them.</li>
+<li><strong>Sequestration.</strong> Medicare cuts 2% from the final payment after the deductible and coinsurance (<a href="https://medicare.fcso.com/fee-schedules/federal-sequestration-payment-reductions" target="_blank" rel="noopener">First Coast</a>). It shows as <a href="https://medicalbilling101.com/denial-codes/co-253/">CO-253</a>.</li>
+<li><strong>Deductible and coinsurance.</strong> The patient&rsquo;s share is taken out of the allowed amount.</li>
+<li><strong>Contractor-priced and non-covered codes.</strong> Codes with status C, N, B, X and others have no national payment. The calculator tells you the status instead.</li>
+</ul>
+<p>The calculator does apply the imaging cap. For capped imaging services, CMS compares the fee schedule amount to an OPPS-based amount and pays the lower one. The calculator shows both. The gap between your charge and the allowed amount is a contractual write-off, often shown as CO-45.</p>
+
+<h2>How to use the RVU calculator</h2>
+<ol>
+<li><strong>Enter the code.</strong> Type a 5-character CPT or HCPCS code, such as 99214 or G0439. New to codes? Read <a href="https://medicalbilling101.com/what-are-cpt-codes/">what CPT codes are</a>.</li>
+<li><strong>Pick a modifier if offered.</strong> Imaging and other split codes list 26 and TC.</li>
+<li><strong>Choose the Medicare locality.</strong> Leave &ldquo;National&rdquo; to match the national amounts on the CMS Look-Up Tool.</li>
+<li><strong>Choose the setting and conversion factor.</strong> Then press Calculate.</li>
+</ol>
+<p>Global days appear with the result. If a claim was paid wrong or denied, check the <a href="../denial-code-lookup/">denial code library</a>, then use the <a href="../appeal-letter-generator/">Appeal Letter Generator</a>. See all our <a href="https://medicalbilling101.com/tools/">free medical billing tools</a>.</p>
+
+<h2>How we tested this RVU calculator</h2>
+<!-- ORIGINAL DATA: calculator test results against CMS files, Nov 10, 2026 -->
+<p>We tested the calculator against 2 CMS data sets before we published it. All 9,526 code rows match the RVUs in the CMS Look-Up Tool data for 2026. We also tested it against the 6,322 capped imaging prices that CMS publishes by locality. Every one matched to the cent. The 2026 figures for 99213, 99214 and 20610 match a hand calculation from the <a href="https://www.cms.gov/medicare/payment/fee-schedules/physician/pfs-relative-value-files/rvu26d" target="_blank" rel="noopener">RVU26D file</a>.</p>
+<p>Found a number that looks wrong? <a href="https://medicalbilling101.com/contact/">Contact us</a> with the code and locality, and we will check it.</p>
+
+<h2>Frequently asked questions</h2>
+<h3>Is this RVU calculator free?</h3>
+<p>Yes. It is free and needs no sign-up. The code you type stays in your browser. The tool downloads the CMS data file and does the math on your device, so nothing is sent or saved.</p>
+<h3>Where does the RVU data come from?</h3>
+<p>It comes from the CMS National Physician Fee Schedule Relative Value File, CY 2026 file version RVU26D, released 08/26/2026. Localities and GPCIs come from the GPCI file in the same CMS download. The conversion factors are $33.4009 and $33.5675, as CMS published them.</p>
+<h3>Why does my Medicare payment not match the calculator?</h3>
+<p>The calculator shows the fee schedule amount. Your remittance can be lower because of the 2%% sequestration cut, multiple procedure rules, payment modifiers, the deductible and coinsurance, or the imaging cap. Medicare Advantage plans pay by contract, so their rates can differ.</p>
+<h3>Can I use the RVU calculator for commercial payers?</h3>
+<p>Only as a reference. Commercial payers set their own rates. Some contracts are written as a percentage of the Medicare fee schedule. If yours is, multiply the result by that percentage.</p>
+<h3>Will RVUs change in 2027?</h3>
+<p>Yes. CMS issued the CY 2027 physician fee schedule final rule on November 4, 2026. It sets the 2027 conversion factors at $32.6286 (non-qualifying APM) and $32.9548 (qualifying APM), effective January 1, 2027. We will load the 2027 RVU file when CMS posts it.</p>
+<h3>What do modifiers 26 and TC mean in the calculator?</h3>
+<p>Modifier 26 is the professional component, the doctor’s reading and report. TC is the technical component, the equipment and staff. Codes that can be split show both options in the modifier list. The global code, with no modifier, pays both parts.</p>
+
+<h2>Sources</h2>
+<ul>
+<li><a href="https://www.cms.gov/medicare/payment/fee-schedules/physician/pfs-relative-value-files/rvu26d" target="_blank" rel="noopener">CMS, PFS Relative Value File RVU26D (CY 2026, released 08/26/2026)</a>: RVUs, status codes, GPCIs, formula and limiting charge.</li>
+<li><a href="https://www.cms.gov/newsroom/fact-sheets/calendar-year-cy-2026-medicare-physician-fee-schedule-final-rule-cms-1832-f" target="_blank" rel="noopener">CMS, CY 2026 Physician Fee Schedule final rule fact sheet (CMS-1832-F).</a></li>
+<li><a href="https://www.cms.gov/medicare/physician-fee-schedule/search/overview" target="_blank" rel="noopener">CMS, Physician Fee Schedule Look-Up Tool.</a></li>
+<li><a href="https://www.federalregister.gov/documents/2026/11/09/2026-22743/medicare-and-medicaid-programs-cy-2027-payment-policies-under-the-physician-fee-schedule-and-other" target="_blank" rel="noopener">Federal Register, CY 2027 Physician Fee Schedule final rule (CMS-1848-F).</a></li>
+<li><a href="https://medicare.fcso.com/fee-schedules/federal-sequestration-payment-reductions" target="_blank" rel="noopener">First Coast Service Options (Medicare contractor), Federal sequestration payment reductions.</a></li>
+</ul>
+
+<p class="disclaimer">This tool is general reference information. It is not legal, billing or compliance advice. Rules and payer policies change. Check the current official source and your payer contract before you file, appeal or write off a claim.</p>
+<footer class="page-footer">
+<p>Live page: <a href="https://medicalbilling101.com/tools/rvu-calculator/">https://medicalbilling101.com/tools/rvu-calculator/</a></p>
+<p>By Manikandan J, CPC, CRCR · <a href="https://medicalbilling101.com/">Medical Billing 101</a></p>
+<p><a href="../index.html">Back to all tools</a></p>
+</footer>
+</div>
+<script src="rvu.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Patient Cost Estimator</title>
+<meta name="description" content="Patient Cost Estimator — standalone copy from Medical Billing 101.">
+<link rel="stylesheet" href="../assets/page.css">
+<link rel="stylesheet" href="tool.css">
+
+</head>
+<body>
+<div class="site-bar"><div class="wrap"><a href="../index.html">Medical billing calculators</a></div></div>
+<div class="wrap">
+<nav class="crumb" aria-label="Breadcrumb"><a href="../index.html">All tools</a> <span aria-hidden="true">›</span> Patient Cost Estimator</nav>
+<h1>Patient Cost Estimator</h1>
+<p class="mbx-tool-intro">This patient cost estimator shows what a patient owes and what the plan pays for one service. Enter the allowed amount, the deductible left, the coinsurance or copay, and the out-of-pocket limit left, and every step of the math is shown.</p>
+<p class="pc-byline">By <a href="https://medicalbilling101.com/about/">Manikandan J, CPC, CRCR</a> &middot; Rules: HealthCare.gov glossary and Medicare.gov 2026 costs &middot; Updated November 11, 2026.</p>
+
+<div id="mbx-pce">
+<div class="pc-grid">
+<form class="pc-card" novalidate>
+<div class="pc-fld"><label for="pc-allowed">Allowed amount ($)</label><input type="text" id="pc-allowed" inputmode="decimal" autocomplete="off" placeholder="e.g. 250.00" required><p class="pc-hint">The plan&rsquo;s allowed amount for the service. It is not the billed charge.</p></div>
+<div class="pc-fld"><label for="pc-ded">Deductible left this year ($)</label><input type="text" id="pc-ded" inputmode="decimal" autocomplete="off" placeholder="0"></div>
+<label class="pc-chk"><input type="checkbox" id="pc-dapp" checked> The deductible applies to this service. </label>
+<fieldset><legend>After the deductible, the patient pays</legend><div class="pc-rad"><label><input type="radio" name="pc-type" value="coins" checked> Coinsurance (%)</label><label><input type="radio" name="pc-type" value="copay"> A copay ($)</label></div></fieldset>
+<div class="pc-fld" id="pc-f-coins"><label for="pc-coins">Coinsurance (%)</label><input type="text" id="pc-coins" inputmode="decimal" autocomplete="off" placeholder="e.g. 20"></div>
+<div class="pc-fld" id="pc-f-copay" hidden><label for="pc-copay">Copay ($)</label><input type="text" id="pc-copay" inputmode="decimal" autocomplete="off" placeholder="e.g. 30"></div>
+<div class="pc-fld"><label for="pc-oop">Out-of-pocket limit left ($)</label><input type="text" id="pc-oop" inputmode="decimal" autocomplete="off" placeholder="Leave blank if none"></div>
+<div class="pc-fld"><label for="pc-billed">Billed charge ($), optional</label><input type="text" id="pc-billed" inputmode="decimal" autocomplete="off" placeholder="e.g. 400.00"></div>
+<button type="submit" class="pc-btn">Estimate patient cost</button>
+<div class="pc-pre" aria-label="Presets"><button type="button" data-pre="hc">HealthCare.gov example</button><button type="button" data-pre="mcr">Medicare Part B 2026</button><button type="button" data-pre="ov">$20 copay visit</button></div>
+<p class="pc-msg" id="pc-msg" role="status" aria-live="polite"></p>
+</form>
+<div class="pc-card" aria-live="polite"><div id="pc-out" hidden></div><p class="pc-empty" id="pc-empty">Enter the amounts. You will see what the patient owes, what the plan pays and each step of the math.</p></div>
+</div>
+<p class="pc-src">Rules: HealthCare.gov glossary. Medicare figures: Medicare.gov and CMS, 2026. This is a guide, not a promise of payment.</p>
+<noscript><p>The patient cost estimator needs JavaScript. It runs in your browser and nothing is sent or saved.</p></noscript>
+</div>
+
+<div class="mbx-keybox">
+<p><strong>Key takeaways</strong></p>
+<ul>
+<li>The patient pays the deductible first, then coinsurance or a copay.</li>
+<li>The out-of-pocket limit caps what the patient pays in a plan year.</li>
+<li>The plan pays the allowed amount minus the patient&rsquo;s share.</li>
+<li>Original Medicare has a $283 Part B deductible in 2026 and no yearly out-of-pocket limit.</li>
+</ul>
+</div>
+
+<h2>How do you calculate what a patient owes?</h2>
+<p>Start with the allowed amount. The patient pays the deductible left, up to the allowed amount. Then the patient pays coinsurance or a copay on the rest. The out-of-pocket limit caps the total, and the plan pays whatever is left of the allowed amount (<a href="https://www.healthcare.gov/glossary/co-insurance/" target="_blank" rel="noopener">HealthCare.gov, coinsurance</a>).</p>
+<p>The patient responsibility calculator follows that order and shows each step. Use it for one covered, in-network service at a time. Run it again for each line on the claim.</p>
+
+<h2>What are a deductible, coinsurance and copay?</h2>
+<p>These terms make up most of what a patient pays. Here is how HealthCare.gov defines them:</p>
+<ul>
+<li>A <strong>deductible</strong> is the amount the patient pays for covered services before the plan starts to pay (<a href="https://www.healthcare.gov/glossary/deductible/" target="_blank" rel="noopener">HealthCare.gov</a>).</li>
+<li><strong>Coinsurance</strong> is the percent of the cost the patient pays after the deductible, such as 20%.</li>
+<li>A <strong>copayment</strong> is a fixed amount the patient pays for a covered service after the deductible, such as $20 (<a href="https://www.healthcare.gov/glossary/co-payment/" target="_blank" rel="noopener">HealthCare.gov</a>).</li>
+<li>An <strong>out-of-pocket maximum</strong> is the most the patient pays for covered services in a plan year (<a href="https://www.healthcare.gov/glossary/out-of-pocket-maximum-limit/" target="_blank" rel="noopener">HealthCare.gov, out-of-pocket maximum</a>).</li>
+</ul>
+<p>Many plans pay for some services, like a checkup, before the deductible is met. For those, uncheck the deductible box. The tool then skips the deductible step.</p>
+
+<h2>What does a patient cost estimate look like?</h2>
+<p>These cases are test cases we ran. The first comes from the HealthCare.gov coinsurance example.</p>
+<figure class="wp-block-table pc-ex"><table>
+<thead><tr><th>Allowed</th><th>Deductible left</th><th>Cost share</th><th>OOP left</th><th>Patient owes</th><th>Plan pays</th></tr></thead>
+<tbody>
+<tr><td>$12,000</td><td>$3,000</td><td>20%</td><td>$6,850</td><td>$4,800.00</td><td>$7,200.00</td></tr>
+<tr><td>$12,000</td><td>$3,000</td><td>20%</td><td>$4,000</td><td>$4,000.00</td><td>$8,000.00</td></tr>
+<tr><td>$500</td><td>$200</td><td>20%</td><td>None</td><td>$260.00</td><td>$240.00</td></tr>
+<tr><td>$100</td><td>$0</td><td>$20 copay</td><td>None</td><td>$20.00</td><td>$80.00</td></tr>
+<tr><td>$100</td><td>$1,000</td><td>$20 copay</td><td>None</td><td>$100.00</td><td>$0.00</td></tr>
+<tr><td>$150</td><td>$1,000, does not apply</td><td>$30 copay</td><td>None</td><td>$30.00</td><td>$120.00</td></tr>
+</tbody></table></figure>
+<p>For example, in row 3 the patient pays the last $200 of the deductible. Then 20% of the other $300 is $60, so the patient owes $260.</p>
+
+<h2>How does the out-of-pocket maximum change the estimate?</h2>
+<p>The out-of-pocket maximum caps what the patient pays. Once deductibles, copays and coinsurance for in-network care reach it, the plan pays 100% of covered benefits for the rest of the plan year (<a href="https://www.healthcare.gov/glossary/out-of-pocket-maximum-limit/" target="_blank" rel="noopener">HealthCare.gov, out-of-pocket maximum</a>).</p>
+<p>For a Marketplace plan in 2026, the limit is no more than $10,600 for an individual or $21,200 for a family. For 2027, it rises to $12,000 and $24,000. It does not count premiums. It also does not count care the plan does not cover, out-of-network care, or charges above the allowed amount.</p>
+
+<h2>How do you estimate Medicare Part B patient cost?</h2>
+<p>For Original Medicare Part B, use a $283 deductible and 20% coinsurance in 2026. The patient usually pays 20% of the Medicare-approved amount after the deductible, when the provider accepts assignment (<a href="https://www.medicare.gov/basics/costs/medicare-costs" target="_blank" rel="noopener">Medicare.gov, Medicare costs</a>).</p>
+<p>Original Medicare has no yearly out-of-pocket limit, so leave that box blank. The $283 figure comes from the CMS 2026 fact sheet (<a href="https://www.cms.gov/newsroom/fact-sheets/2026-medicare-parts-b-premiums-deductibles" target="_blank" rel="noopener">CMS</a>). To find the Medicare-approved amount for a CPT code, use the <a href="../rvu-calculator/">RVU calculator</a>. Some services, such as clinical lab tests, have $0 coinsurance.</p>
+
+<h2>What is the difference between the billed charge and the allowed amount?</h2>
+<p>The <strong>allowed amount</strong> is the most the plan pays for a covered service, and the billed charge is what the provider lists. The estimate always starts from the allowed amount (<a href="https://www.healthcare.gov/glossary/allowed-amount/" target="_blank" rel="noopener">HealthCare.gov, allowed amount</a>).</p>
+<p>An in-network provider cannot balance bill the patient for the difference (<a href="https://www.healthcare.gov/glossary/balance-billing/" target="_blank" rel="noopener">HealthCare.gov, balance billing</a>). On a remittance, that difference usually posts as a <a href="https://medicalbilling101.com/denial-codes/co-45/">CO-45 contractual adjustment</a>. The patient&rsquo;s share posts as <a href="https://medicalbilling101.com/denial-codes/pr-1-pr-2-pr-3/">PR-1, PR-2 and PR-3</a> for deductible, coinsurance and copay. When a patient disputes a bill, I check the EOB allowed amount first.</p>
+
+<h2>How do you use the patient cost estimator?</h2>
+<ol>
+<li><strong>Enter the allowed amount</strong> from the fee schedule, the EOB or the plan&rsquo;s estimate.</li>
+<li><strong>Enter the deductible left</strong> and say whether it applies to this service.</li>
+<li><strong>Pick coinsurance or copay</strong> and enter the amount.</li>
+<li><strong>Enter the out-of-pocket limit left,</strong> or leave it blank if there is none.</li>
+<li><strong>Press Estimate patient cost</strong> and read the steps.</li>
+</ol>
+<p>A patient billed for a &ldquo;free&rdquo; preventive visit is a common case. Read <a href="https://medicalbilling101.com/charged-for-annual-physical-or-screening-colonoscopy/">why patients get charged for an annual physical or screening colonoscopy</a>. See all our <a href="https://medicalbilling101.com/tools/">free medical billing tools</a>.</p>
+
+<h2>How did we test this patient cost estimator?</h2>
+<!-- ORIGINAL DATA: estimator results checked by hand against the HealthCare.gov glossary examples, Nov 11, 2026 -->
+<p>We tested the estimator with 29 checks before we published it. They include the HealthCare.gov coinsurance and copay examples, partial deductibles, an out-of-pocket cap, a copay larger than the amount left, cent rounding and bad input. Every result matched a hand calculation.</p>
+<p>Found a result that looks wrong? <a href="https://medicalbilling101.com/contact/">Contact us</a> with the amounts, and we will check it.</p>
+
+<h2>Frequently asked questions</h2>
+<h3>Is this patient cost estimator free?</h3>
+<p>Yes. It is free and needs no sign-up. The amounts you enter stay in your browser.</p>
+<h3>Does the copay apply before or after the deductible?</h3>
+<p>HealthCare.gov describes a copay as a fixed amount paid after the deductible. Many plans cover some services, like a checkup, before the deductible. Check the plan details and set the deductible box to match.</p>
+<h3>What is the 2026 Medicare Part B deductible?</h3>
+<p>The 2026 Part B deductible is $283. After it, the patient usually pays 20% of the Medicare-approved amount for most Part B services.</p>
+<h3>Does Original Medicare have an out-of-pocket maximum?</h3>
+<p>No. Original Medicare has no yearly limit on out-of-pocket costs, unless the patient has extra coverage, like Medigap or a Medicare Advantage plan.</p>
+<h3>What is the 2026 out-of-pocket limit for Marketplace plans?</h3>
+<p>For plan year 2026, it is no more than $10,600 for an individual or $21,200 for a family. For 2027, it is $12,000 and $24,000.</p>
+<h3>Why is my bill different from the estimate?</h3>
+<p>The plan decides the final amount when it pays the claim. Other claims may use up the deductible first. Some services may not be covered.</p>
+
+<h2>Sources</h2>
+<ul>
+<li><a href="https://www.healthcare.gov/glossary/" target="_blank" rel="noopener">HealthCare.gov glossary: deductible, coinsurance, copay and more.</a></li>
+<li><a href="https://www.medicare.gov/basics/costs/medicare-costs" target="_blank" rel="noopener">Medicare.gov: Medicare costs in 2026.</a></li>
+<li><a href="https://www.cms.gov/newsroom/fact-sheets/2026-medicare-parts-b-premiums-deductibles" target="_blank" rel="noopener">CMS: 2026 Medicare Parts A &amp; B premiums and deductibles.</a></li>
+<li><a href="https://www.healthcare.gov/glossary/out-of-pocket-maximum-limit/" target="_blank" rel="noopener">HealthCare.gov: out-of-pocket limit for 2026 and 2027.</a></li>
+</ul>
+<p><em>This estimator is an educational guide, not a guarantee of payment or billing advice. The plan&rsquo;s claim decision sets the final patient responsibility.</em></p>
+
+<p class="disclaimer">This tool is general reference information. It is not legal, billing or compliance advice. Rules and payer policies change. Check the current official source and your payer contract before you file, appeal or write off a claim.</p>
+<footer class="page-footer">
+<p>Live page: <a href="https://medicalbilling101.com/tools/patient-cost-estimator/">https://medicalbilling101.com/tools/patient-cost-estimator/</a></p>
+<p>By Manikandan J, CPC, CRCR · <a href="https://medicalbilling101.com/">Medical Billing 101</a></p>
+<p><a href="../index.html">Back to all tools</a></p>
+</footer>
+</div>
+<script src="pce.js" defer></script>
+</body>
+</html>

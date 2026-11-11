@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NPI Lookup</title>
+<meta name="description" content="NPI Lookup — standalone copy from Medical Billing 101.">
+<link rel="stylesheet" href="../assets/page.css">
+<link rel="stylesheet" href="npi-lookup.css">
+
+</head>
+<body>
+<div class="site-bar"><div class="wrap"><a href="../index.html">Medical billing calculators</a></div></div>
+<div class="wrap">
+<nav class="crumb" aria-label="Breadcrumb"><a href="../index.html">All tools</a> <span aria-hidden="true">›</span> NPI Lookup</nav>
+<h1>NPI Lookup</h1>
+<p class="mbx-tool-intro">Look up any provider's National Provider Identifier (NPI) in seconds. Search by the 10-digit NPI, or by a provider's last name or an organization's name and state. Results come live from the official CMS NPPES NPI Registry.</p>
+<div class="mbx-npi mbx-noads" data-mbx-npi><form class="mbx-npi__form" novalidate><fieldset class="mbx-npi__mode"><legend>Search by</legend><label><input type="radio" name="mode" value="npi" checked> NPI number</label><label><input type="radio" name="mode" value="ind"> Individual (Type 1)</label><label><input type="radio" name="mode" value="org"> Organization (Type 2)</label></fieldset><div class="mbx-npi__row" data-m="npi"><label for="mbx-npi-n">NPI number</label><input id="mbx-npi-n" name="number" inputmode="numeric" maxlength="10" autocomplete="off" placeholder="10 digits, e.g. 1720043219"></div><div class="mbx-npi__row mbx-npi__grid" data-m="ind" hidden><div><label for="mbx-npi-ln">Last name</label><input id="mbx-npi-ln" name="last_name" maxlength="60" autocomplete="off"></div><div><label for="mbx-npi-fn">First name <span>(optional)</span></label><input id="mbx-npi-fn" name="first_name" maxlength="60" autocomplete="off"></div></div><div class="mbx-npi__row" data-m="org" hidden><label for="mbx-npi-on">Organization name</label><input id="mbx-npi-on" name="organization_name" maxlength="60" autocomplete="off"></div><div class="mbx-npi__row mbx-npi__grid" data-m="ind org" hidden><div><label for="mbx-npi-st">State</label><select id="mbx-npi-st" name="state"><option value="">State</option><option>AL</option><option>AK</option><option>AZ</option><option>AR</option><option>CA</option><option>CO</option><option>CT</option><option>DE</option><option>DC</option><option>FL</option><option>GA</option><option>HI</option><option>ID</option><option>IL</option><option>IN</option><option>IA</option><option>KS</option><option>KY</option><option>LA</option><option>ME</option><option>MD</option><option>MA</option><option>MI</option><option>MN</option><option>MS</option><option>MO</option><option>MT</option><option>NE</option><option>NV</option><option>NH</option><option>NJ</option><option>NM</option><option>NY</option><option>NC</option><option>ND</option><option>OH</option><option>OK</option><option>OR</option><option>PA</option><option>RI</option><option>SC</option><option>SD</option><option>TN</option><option>TX</option><option>UT</option><option>VT</option><option>VA</option><option>WA</option><option>WV</option><option>WI</option><option>WY</option><option>PR</option><option>VI</option><option>GU</option><option>AS</option><option>MP</option><option>AA</option><option>AE</option><option>AP</option></select></div><div><label for="mbx-npi-ci">City <span>(optional)</span></label><input id="mbx-npi-ci" name="city" maxlength="40" autocomplete="off"></div></div><button type="submit" class="mbx-npi__btn">Search NPI Registry</button><p class="mbx-npi__note">Data comes live from the CMS NPPES NPI Registry. This copy calls the official API directly. Searches are not saved.</p></form><div class="mbx-npi__out" aria-live="polite"></div><noscript><p>This lookup needs JavaScript. You can search the official <a href="https://npiregistry.cms.hhs.gov/">NPPES NPI Registry</a> instead.</p></noscript></div>
+
+<div class="mbx-keybox">
+<p><strong>Key takeaways</strong></p>
+<ul>
+<li>An NPI is a 10-digit number that identifies a health care provider on every HIPAA standard transaction, including claims.</li>
+<li>Type 1 NPIs belong to individuals and Type 2 NPIs belong to organizations. Use the right one in the right claim box.</li>
+<li>If the name, NPI or taxonomy on your claim does not match NPPES and the payer's file, expect a denial such as CO-206, CO-207 or CO-208.</li>
+</ul>
+</div>
+
+<h2>How to use the NPI lookup</h2>
+<ol>
+<li><strong>Pick how you want to search.</strong> Choose NPI number if you have it. Choose Individual for a doctor, nurse or therapist, or Organization for a hospital, clinic, group or pharmacy.</li>
+<li><strong>Fill in the fields.</strong> A name search needs a state. First name and city are optional and help narrow long lists.</li>
+<li><strong>Read the results card.</strong> Each card shows the name, NPI, type, status, primary taxonomy code, other taxonomies, practice address, phone, enumeration date and last update.</li>
+<li><strong>Open the official record.</strong> Use the NPPES link on the card when you need to show a payer or auditor the source.</li>
+</ol>
+
+<h2>What is an NPI number?</h2>
+<p><strong>The National Provider Identifier (NPI)</strong> is a HIPAA Administrative Simplification standard. <a href="https://www.cms.gov/regulations-and-guidance/administrative-simplification/nationalprovidentstand" target="_blank" rel="noopener">CMS describes it</a> as a 10-position, intelligence-free numeric identifier. That means the digits say nothing about the provider, such as where they practice or their specialty. Covered providers, health plans and clearinghouses must use NPIs in HIPAA standard transactions in place of the older legacy provider IDs.</p>
+<p>The last digit is a check digit. <a href="https://www.cms.gov/Regulations-and-Guidance/Administrative-Simplification/NationalProvIdentStand/Downloads/NPIcheckdigit.pdf" target="_blank" rel="noopener">CMS calculates it</a> with the Luhn formula on the first nine digits, using the prefix 80840, where 80 means health applications and 840 means the United States. This tool runs that same check before it sends any search, so a typo is caught right away.</p>
+<p><strong>NPPES</strong> is the National Plan and Provider Enumeration System, where NPIs are issued and stored. The public NPI Registry shows the parts of each NPPES record that CMS makes public.</p>
+
+<h2>Type 1 vs Type 2 NPI</h2>
+<ul>
+<li><strong>Type 1 (individual):</strong> physicians, nurse practitioners, therapists, dentists and other individual providers. Sole proprietors are Type 1. An individual can have only one NPI.</li>
+<li><strong>Type 2 (organization):</strong> hospitals, nursing homes, group practices, home health agencies, labs and pharmacies. An organization can have more than one NPI, for example one for each subpart.</li>
+</ul>
+<p>That split comes from the <a href="https://www.cms.gov/files/document/npi-fact-sheet.pdf" target="_blank" rel="noopener">CMS NPI fact sheet</a>. A provider who is incorporated can have both: a Type 1 NPI for themselves and a Type 2 NPI for their corporation or LLC.</p>
+
+<h2>Where the NPI goes on the CMS-1500 and UB-04</h2>
+<p>Medicare's <a href="https://www.cms.gov/regulations-and-guidance/guidance/manuals/downloads/clm104c26.pdf" target="_blank" rel="noopener">CMS-1500 instructions</a> and <a href="https://www.cms.gov/regulations-and-guidance/guidance/manuals/downloads/clm104c25.pdf" target="_blank" rel="noopener">UB-04 instructions</a> place each NPI in a set box. Other payers follow the same layout, but check their manuals for extra rules.</p>
+<figure class="wp-block-table"><table><thead><tr><th>Form and box</th><th>Which NPI goes there</th></tr></thead><tbody>
+<tr><td>CMS-1500 item 17b</td><td>Referring, ordering or supervising provider named in item 17</td></tr>
+<tr><td>CMS-1500 item 24J</td><td>Rendering provider, in the lower unshaded part of the line</td></tr>
+<tr><td>CMS-1500 item 32a</td><td>Service facility, when required</td></tr>
+<tr><td>CMS-1500 item 33a</td><td>Billing provider or group</td></tr>
+<tr><td>UB-04 form locator 56</td><td>Billing provider</td></tr>
+<tr><td>UB-04 form locators 76 and 77</td><td>Attending and operating providers, when required</td></tr>
+</tbody></table></figure>
+<p>A missing rendering NPI often comes back with remark code <a href="https://medicalbilling101.com/denial-codes/n290/">N290</a>. A billing NPI that the payer cannot match leads to <a href="https://medicalbilling101.com/denial-codes/co-208/">CO-208</a>.</p>
+
+<h2>Taxonomy codes and the NPI</h2>
+<p><strong>A taxonomy code</strong> is a 10-character code from the <a href="https://www.nucc.org/index.php/code-sets-mainmenu-41/provider-taxonomy-mainmenu-40" target="_blank" rel="noopener">Health Care Provider Taxonomy code set</a> kept by the National Uniform Claim Committee (NUCC). It names the provider's type and specialty, for example 367500000X for a certified registered nurse anesthetist. Each NPPES record lists one primary taxonomy and can list more.</p>
+<p>Some payers want the taxonomy on the claim. On the CMS-1500, NUCC uses qualifier ZZ in item 24I with the taxonomy in the shaded part of 24J, and the same qualifier in item 33b. Medicare does not generally require it. If a payer denies a service for the provider's type or specialty, as in <a href="https://medicalbilling101.com/denial-codes/co-8/">CO-8</a>, compare the taxonomy on the claim with the one in NPPES and on the payer's enrollment file.</p>
+
+<h2>How to update an NPPES record</h2>
+<p>Providers update their record by logging in to NPPES online. Some changes can be sent on paper with form CMS-10114. <a href="https://www.cms.gov/Regulations-and-Guidance/Administrative-Simplification/Unique-Identifier/UniqueIdentifiersFAQs" target="_blank" rel="noopener">Federal rules</a> say a covered provider must report changes to its required NPPES data within 30 days of the change (45 CFR 162.410). Moves, new practice locations and taxonomy changes are the usual reasons a lookup does not match the claim.</p>
+<p>Keep in mind that an NPI does not prove a provider is licensed, credentialed or enrolled with a payer. A provider that is not set up with the payer can trigger <a href="https://medicalbilling101.com/denial-codes/co-185/">CO-185</a> even with a valid NPI. When a claim is denied for any of these reasons, our <a href="../appeal-letter-generator/">appeal letter generator</a> can help you draft a reply.</p>
+
+<h2>Frequently asked questions</h2>
+
+<div class="wp-block-rank-math-faq-block"><div id="faq-question-npi-1" class="rank-math-faq-item"><h3 class="rank-math-question">Is this NPI lookup free?</h3><div class="rank-math-answer">Yes. It is free, needs no sign-up and has no search limit beyond a short pause if you send more than 20 searches in a minute. Results come from the public CMS NPPES NPI Registry.</div></div><div id="faq-question-npi-2" class="rank-math-faq-item"><h3 class="rank-math-question">Where does the NPI data come from?</h3><div class="rank-math-answer">Every search is sent to the official NPPES NPI Registry API (version 2.1) run by CMS. NPPES refreshes the API data daily, so what you see matches the public registry. We do not edit the data.</div></div><div id="faq-question-npi-3" class="rank-math-faq-item"><h3 class="rank-math-question">How do I find a doctor's NPI number?</h3><div class="rank-math-answer">Choose Individual, type the provider's last name, pick the state and press Search. Add a first name or city if you get too many matches. You can also add * after two or more letters, such as smi*, to match names that start with those letters.</div></div><div id="faq-question-npi-4" class="rank-math-faq-item"><h3 class="rank-math-question">What is the difference between a Type 1 and a Type 2 NPI?</h3><div class="rank-math-answer">A Type 1 NPI is for an individual provider, such as a physician, nurse practitioner or sole proprietor. An individual can have only one. A Type 2 NPI is for an organization, such as a hospital, group practice or pharmacy, and an organization can have more than one.</div></div><div id="faq-question-npi-5" class="rank-math-faq-item"><h3 class="rank-math-question">How do I check if an NPI number is valid?</h3><div class="rank-math-answer">Enter it in NPI mode. The tool first checks that it has 10 digits, starts with 1 or 2 and passes the Luhn check digit test with the 80840 prefix that CMS uses. It then looks the number up in NPPES to confirm it is on file.</div></div><div id="faq-question-npi-6" class="rank-math-faq-item"><h3 class="rank-math-question">Does an NPI mean the provider is licensed or enrolled with a payer?</h3><div class="rank-math-answer">No. CMS states that having an NPI does not ensure a provider is licensed or credentialed, does not guarantee payment and does not enroll the provider in any health plan. Check licensing with the state board and enrollment with each payer.</div></div><div id="faq-question-npi-7" class="rank-math-faq-item"><h3 class="rank-math-question">How do I update the information on an NPI record?</h3><div class="rank-math-answer">The provider, or a surrogate they authorize, logs in to NPPES and edits the record online. Federal rules require covered providers to report changes to their NPPES data within 30 days. Some changes can also be sent on paper form CMS-10114.</div></div><div id="faq-question-npi-8" class="rank-math-faq-item"><h3 class="rank-math-question">Is my search saved or shared?</h3><div class="rank-math-answer">No. This standalone copy runs in your browser and calls the public NPPES API directly. Nothing is stored on Medical Billing 101. The official registry may log requests on its side.</div></div></div>
+
+<h2>Sources</h2>
+<ul>
+<li><a href="https://www.cms.gov/regulations-and-guidance/administrative-simplification/nationalprovidentstand" target="_blank" rel="noopener">CMS, National Provider Identifier Standard (NPI)</a>.</li>
+<li><a href="https://www.cms.gov/files/document/npi-fact-sheet.pdf" target="_blank" rel="noopener">CMS, NPI fact sheet: Type 1 and Type 2 NPIs</a>.</li>
+<li><a href="https://www.cms.gov/Regulations-and-Guidance/Administrative-Simplification/NationalProvIdentStand/Downloads/NPIcheckdigit.pdf" target="_blank" rel="noopener">CMS, Requirements for the NPI check digit</a>.</li>
+<li><a href="https://npiregistry.cms.hhs.gov/api-page" target="_blank" rel="noopener">CMS, NPPES NPI Registry API (version 2.1)</a>.</li>
+<li><a href="https://www.cms.gov/Regulations-and-Guidance/Administrative-Simplification/Unique-Identifier/UniqueIdentifiersFAQs" target="_blank" rel="noopener">CMS, Unique Identifiers FAQs (30-day NPPES updates)</a>.</li>
+<li><a href="https://www.cms.gov/regulations-and-guidance/guidance/manuals/downloads/clm104c26.pdf" target="_blank" rel="noopener">CMS, Medicare Claims Processing Manual, Ch. 26 (CMS-1500)</a>.</li>
+<li><a href="https://www.cms.gov/regulations-and-guidance/guidance/manuals/downloads/clm104c25.pdf" target="_blank" rel="noopener">CMS, Medicare Claims Processing Manual, Ch. 25 (UB-04)</a>.</li>
+<li><a href="https://www.nucc.org/index.php/code-sets-mainmenu-41/provider-taxonomy-mainmenu-40" target="_blank" rel="noopener">NUCC, Health Care Provider Taxonomy code set</a>.</li>
+<li><a href="https://www.nucc.org/index.php/1500-claim-form-mainmenu-35/1500-instructions-mainmenu-42" target="_blank" rel="noopener">NUCC, 1500 Claim Form instructions</a>.</li>
+</ul>
+
+<p class="disclaimer">This tool is general reference information. It is not legal, billing or compliance advice. Rules and payer policies change. Check the current official source and your payer contract before you file, appeal or write off a claim.</p>
+<footer class="page-footer">
+<p>Live page: <a href="https://medicalbilling101.com/tools/npi-lookup/">https://medicalbilling101.com/tools/npi-lookup/</a></p>
+<p>By Manikandan J, CPC, CRCR · <a href="https://medicalbilling101.com/">Medical Billing 101</a></p>
+<p><a href="../index.html">Back to all tools</a></p>
+</footer>
+</div>
+<script src="npi-lookup.js" defer></script>
+</body>
+</html>

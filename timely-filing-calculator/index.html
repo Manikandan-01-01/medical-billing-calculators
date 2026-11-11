@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Timely Filing Deadline Calculator</title>
+<meta name="description" content="Timely Filing Deadline Calculator — standalone copy from Medical Billing 101.">
+<link rel="stylesheet" href="../assets/page.css">
+<link rel="stylesheet" href="tfl-calculator.css">
+
+</head>
+<body>
+<div class="site-bar"><div class="wrap"><a href="../index.html">Medical billing calculators</a></div></div>
+<div class="wrap">
+<nav class="crumb" aria-label="Breadcrumb"><a href="../index.html">All tools</a> <span aria-hidden="true">›</span> Timely Filing Deadline Calculator</nav>
+<h1>Timely Filing Deadline Calculator</h1>
+<p class="mbx-tool-intro">Enter the date of service or the denial date and the filing limit to see the exact deadline, how many days are left, and add a reminder to your calendar.</p>
+
+<div class="mbx-tfl" data-mbx-tfl data-preset="medicare-claim"></div>
+
+<h2>How to use the calculator</h2>
+<ol>
+<li><strong>Choose a rule.</strong> The Medicare presets follow CMS rules. The other presets are examples only; replace them with the limit in your payer contract or provider manual.</li>
+<li><strong>Pick the deadline type and what you count from:</strong> the date of service for claims, or the date on the denial or remittance notice for corrected claims and appeals.</li>
+<li><strong>Enter the start date and the limit</strong> in days, months or years. Tick the 5-day mail presumption when the rule counts from the date you <em>received</em> the notice.</li>
+<li><strong>Read the result.</strong> Green means more than 30 days left, amber means under 30 days, and red means the deadline has passed.</li>
+<li><strong>Add to calendar.</strong> The .ics file works with Google Calendar, Outlook and Apple Calendar and includes a reminder 7 days before.</li>
+</ol>
+<h2>Medicare timely filing and appeal limits</h2>
+<ul>
+<li><strong>Claims:</strong> within 12 months, or 1 calendar year, after the date of service (42 CFR 424.44). A service on March 22 must be filed by March 22 of the following year.</li>
+<li><strong>Redetermination (first-level appeal):</strong> within 120 days of receiving the initial determination. Receipt is presumed 5 days after the date on the notice, unless there is evidence otherwise (42 CFR 405.942).</li>
+<li><strong>Reconsideration by the QIC (second level):</strong> within 180 days of receiving the redetermination decision (42 CFR 405.962).</li>
+</ul>
+<p>Missed a filing limit? See the <a href="https://medicalbilling101.com/denial-codes/co-29/">CO-29 timely filing guide</a>. Ready to appeal? Use the <a href="../appeal-letter-generator/">Appeal Letter Generator</a>.</p>
+
+<h2>Frequently asked questions</h2>
+<h3>What is the Medicare timely filing limit?</h3>
+<p>Medicare fee-for-service claims must be filed within 12 months, or 1 calendar year, after the date of service (42 CFR 424.44). For institutional claims that cover a span of dates, the “through” date on the claim is used.</p>
+<h3>How long do I have to appeal a Medicare claim denial?</h3>
+<p>You have 120 days from the date you receive the initial determination to request a redetermination. Receipt is presumed to be 5 days after the date on the notice, so in practice the window is 125 days from the notice date unless you can show you received it later.</p>
+<h3>What is the 5-day mail presumption?</h3>
+<p>Medicare presumes you received a notice 5 days after the date printed on it, unless there is evidence that you received it later. The calculator adds those 5 days before counting the appeal limit when the box is ticked.</p>
+<h3>How does the calculator handle month-end dates and leap years?</h3>
+<p>Month and year limits land on the same calendar day. When that day doesn’t exist in the target month, the last day of the month is used: January 31 plus 1 month is February 28, or February 29 in a leap year, and February 29 plus 1 year is February 28. Day limits are counted on the calendar, so leap days are included.</p>
+<h3>What are the timely filing limits for commercial payers?</h3>
+<p>They are set by each payer’s contract, provider manual and, in some cases, state law, and they differ for claims, corrected claims and appeals. The example presets are not real payer rules; always enter the limit from your own contract.</p>
+<h3>What happens if a claim is filed after the deadline?</h3>
+<p>The payer will usually deny it with CARC 29 (the time limit for filing has expired), and under a CO group code the amount is generally a provider write-off. These denials are usually overturned only with proof that the claim was filed on time or a documented exception.</p>
+<h3>Does the calculator save my dates?</h3>
+<p>No. Everything runs in your browser. Nothing is stored or sent, and the calendar file is created on your device.</p>
+
+<h2>Sources</h2>
+<ul>
+<li><a href="https://www.ecfr.gov/current/title-42/chapter-IV/subchapter-B/part-424/subpart-C/section-424.44" target="_blank" rel="noopener">eCFR, 42 CFR 424.44 (time limits for filing claims)</a></li>
+<li><a href="https://www.ecfr.gov/current/title-42/chapter-IV/subchapter-B/part-405/subpart-I" target="_blank" rel="noopener">eCFR, 42 CFR 405.942 and 405.962 (Medicare appeal time frames)</a></li>
+<li><a href="https://www.cms.gov/regulations-and-guidance/guidance/manuals/downloads/clm104c01.pdf" target="_blank" rel="noopener">CMS, Medicare Claims Processing Manual (IOM 100-04), Ch. 1, §70</a></li>
+</ul>
+
+<p class="disclaimer">This tool is general reference information. It is not legal, billing or compliance advice. Rules and payer policies change. Check the current official source and your payer contract before you file, appeal or write off a claim.</p>
+<footer class="page-footer">
+<p>Live page: <a href="https://medicalbilling101.com/tools/timely-filing-calculator/">https://medicalbilling101.com/tools/timely-filing-calculator/</a></p>
+<p>By Manikandan J, CPC, CRCR · <a href="https://medicalbilling101.com/">Medical Billing 101</a></p>
+<p><a href="../index.html">Back to all tools</a></p>
+</footer>
+</div>
+<script src="tfl-calculator.js" defer></script>
+</body>
+</html>
